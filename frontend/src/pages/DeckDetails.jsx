@@ -36,7 +36,17 @@ const DeckDetails = () => {
   const { id } = useParams(); 
 
   const deckFiltered = decksData.find(item => item.id === id)
+
+  if(!deckFiltered) {
+    throw new Response("Học phần này không tồn tại hoặc đã bị xóa!", { status: 404 })
+  }
+
   const cardFiltered = cardsData.filter(item => item.deckId === id)
+  const cardLearned = cardFiltered.filter(card => card.status === "learned").length
+  const progressPercent = deckFiltered.totalCards > 0 
+    ? Math.round((cardLearned / deckFiltered.totalCards) * 100) 
+    : 0;
+
 
   return (
     <main className="flex-1 flex flex-col h-screen overflow-hidden text-zinc-50 font-sans bg-zinc-950 relative">
@@ -112,9 +122,9 @@ const DeckDetails = () => {
               <div className="flex-1">
                 <div className="flex justify-between items-center text-sm font-medium mb-2">
                   <span className="text-zinc-400">Tiến độ học phần</span>
-                  <span className="text-emerald-400">{deckFiltered.progress}% (21/60 thẻ)</span>
+                  <span className="text-emerald-400">{progressPercent}% ({cardLearned}/{deckFiltered.totalCards} thẻ)</span>
                 </div>
-                <Progress value={35} className="h-2 bg-zinc-800" indicatorColor="bg-emerald-400" />
+                <Progress value={progressPercent} className="h-2 bg-zinc-800" indicatorColor="bg-emerald-400" />
               </div>
             </div>
           </section>
@@ -125,7 +135,7 @@ const DeckDetails = () => {
               description="Bắt đầu phiên học với thuật toán Spaced Repetition."
               icon={FiPlay}
               variant="blue"
-              onClick={() => navigate(`/study/${id || 'deck-002'}`)}
+              onClick={() => navigate(`/study/${id}`)}
             />
 
             <ActionCard
@@ -138,8 +148,14 @@ const DeckDetails = () => {
           </section>
 
           <section>
-            <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              Danh sách từ vựng <Badge variant="secondary" className="bg-white/10 hover:bg-white/10 font-normal">{deckFiltered.totalCards} thẻ</Badge>
+            <h3 className="text-xl font-bold mb-6 flex items-center gap-2 text-zinc-100 leading-none">
+              <span>Danh sách từ vựng</span>
+              <Badge 
+                variant="outline" 
+                className="bg-white/10 text-zinc-300 border-white/10 px-2 py-0.5 text-[11px] font-medium rounded-full font-mono tracking-wider shadow-inner translate-y-[3px]"
+              >
+                {deckFiltered.totalCards} thẻ
+              </Badge>
             </h3>
             <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden shadow-lg shadow-black/20">
               <Table>
