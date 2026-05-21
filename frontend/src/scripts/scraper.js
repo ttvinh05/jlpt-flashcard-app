@@ -16,6 +16,7 @@ for (let i = 0; i < sides.length; i += 2) {
     // 1. DỌN RÁC MẶT TRƯỚC
     const frontLines = frontText.split('\n');
     let cleanFront = frontLines[frontLines.length - 1].trim();
+    cleanFront = cleanFront.replace(/^No\d+\.\s*/i, '');
 
     // 2. BÓC TÁCH MẶT SAU
     let hiragana = "";

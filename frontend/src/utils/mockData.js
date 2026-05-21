@@ -7,7 +7,6 @@ export const decksData = [
         createdAt: "2026-05-05T10:00:00.000Z",
         author: "hahaha",
         level: "N2",
-        progress: 70
     },
     {
         id: "deck_n2_1-50",
@@ -17,7 +16,6 @@ export const decksData = [
         createdAt: "2026-05-03T10:00:00.000Z",
         author: "qa",
         level: "N2",
-        progress: 100
     },
 ]
 
@@ -25,62 +23,40 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_1",
     "deckId": "deck_n2_1-50",
-    "front": "No1. 人生",
+    "front": "人生",
     "back": {
       "hiragana": "じんせい",
       "meaning": "NHÂN SINH\nCuộc Sống",
       "example": "・幸せな人生を送る。\n・·Sống một cuộc sống hạnh phúc."
     },
-    "status": "new"
+    "status": "learned"
   },
   {
     "id": "deck_n2_1-50_card_2",
     "deckId": "deck_n2_1-50",
-    "front": "No9. 双子",
+    "front": "人間",
     "back": {
-      "hiragana": "ふたご",
-      "meaning": "SONG TỬ\nSinh Đôi",
-      "example": "・私には双子の弟がいます。\n・Tôi có một người anh em sinh đôi."
+      "hiragana": "にんげん",
+      "meaning": "NHÂN GIAN\nCon Người",
+      "example": "・人間は皆、平等である。\n・Mọi người đều bình đẳng."
     },
     "status": "learned"
   },
   {
     "id": "deck_n2_1-50_card_3",
     "deckId": "deck_n2_1-50",
-    "front": "No50. 感情",
+    "front": "人",
     "back": {
-      "hiragana": "かんじょう",
-      "meaning": "CẢM TÌNH\nBiểu Cảm Tâm Trạng",
-      "example": "・田中さんはすぐに感情が顔に出る。\n・Cảm xúc của Tanaka ngay lập tức hiện rõ trên khuôn mặt."
+      "hiragana": "ひと",
+      "meaning": "NHÂN\nNgười",
+      "example": "・佐藤さんという人から電話がありました。\n・Một người tên là Santo đã gọi điện đến đây."
     },
     "status": "learning"
   },
   {
     "id": "deck_n2_1-50_card_4",
     "deckId": "deck_n2_1-50",
-    "front": "No2. 人間",
-    "back": {
-      "hiragana": "にんげん",
-      "meaning": "NHÂN GIAN\nCon Người",
-      "example": "・人間は皆、平等である。\n・Mọi người đều bình đẳng."
-    },
-    "status": "new"
-  },
-  {
-    "id": "deck_n2_1-50_card_5",
-    "deckId": "deck_n2_1-50",
-    "front": "No3. 人",
-    "back": {
-      "hiragana": "ひと",
-      "meaning": "NHÂN\nNgười",
-      "example": "・佐藤さんという人から電話がありました。\n・Một người tên là Santo đã gọi điện đến đây."
-    },
-    "status": "new"
-  },
-  {
-    "id": "deck_n2_1-50_card_6",
-    "deckId": "deck_n2_1-50",
-    "front": "No4. 祖先",
+    "front": "祖先",
     "back": {
       "hiragana": "そせん",
       "meaning": "TỔ TIÊN\nTổ Tiên",
@@ -89,9 +65,9 @@ export const cardsData = [
     "status": "new"
   },
   {
-    "id": "deck_n2_1-50_card_7",
+    "id": "deck_n2_1-50_card_5",
     "deckId": "deck_n2_1-50",
-    "front": "No5. 親戚",
+    "front": "親戚",
     "back": {
       "hiragana": "しんせき",
       "meaning": "THÂN THÍCH\nHọ Hàng",
@@ -100,9 +76,9 @@ export const cardsData = [
     "status": "new"
   },
   {
-    "id": "deck_n2_1-50_card_8",
+    "id": "deck_n2_1-50_card_6",
     "deckId": "deck_n2_1-50",
-    "front": "No6. 夫婦",
+    "front": "夫婦",
     "back": {
       "hiragana": "ふうふ",
       "meaning": "PHU PHỤ\nVợ Chồng",
@@ -111,9 +87,9 @@ export const cardsData = [
     "status": "new"
   },
   {
-    "id": "deck_n2_1-50_card_9",
+    "id": "deck_n2_1-50_card_7",
     "deckId": "deck_n2_1-50",
-    "front": "No7. 長男",
+    "front": "長男",
     "back": {
       "hiragana": "ちょうなん",
       "meaning": "TRƯỜNG NAM\nTrưởng Nam",
@@ -122,9 +98,9 @@ export const cardsData = [
     "status": "new"
   },
   {
-    "id": "deck_n2_1-50_card_10",
+    "id": "deck_n2_1-50_card_8",
     "deckId": "deck_n2_1-50",
-    "front": "No8. 主人",
+    "front": "主人",
     "back": {
       "hiragana": "しゅじん",
       "meaning": "CHỦ NHÂN\nChồng Chủ Tiệm",
@@ -133,9 +109,20 @@ export const cardsData = [
     "status": "new"
   },
   {
-    "id": "deck_n2_1-50_card_11",
+    "id": "deck_n2_1-50_card_9",
     "deckId": "deck_n2_1-50",
-    "front": "No10. 迷子",
+    "front": "双子",
+    "back": {
+      "hiragana": "ふたご",
+      "meaning": "SONG TỬ\nSinh Đôi",
+      "example": "・私には双子の弟がいます。\n・Tôi có một người anh em sinh đôi."
+    },
+    "status": "new"
+  },
+  {
+    "id": "deck_n2_1-50_card_10",
+    "deckId": "deck_n2_1-50",
+    "front": "迷子",
     "back": {
       "hiragana": "まいご",
       "meaning": "MÊ TỬ\nTrẻ Bị Lạc",
@@ -144,9 +131,9 @@ export const cardsData = [
     "status": "new"
   },
   {
-    "id": "deck_n2_1-50_card_12",
+    "id": "deck_n2_1-50_card_11",
     "deckId": "deck_n2_1-50",
-    "front": "No11. 他人",
+    "front": "他人",
     "back": {
       "hiragana": "たにん",
       "meaning": "THA NHÂN\nNgười Khác",
@@ -155,9 +142,20 @@ export const cardsData = [
     "status": "new"
   },
   {
+    "id": "deck_n2_1-50_card_12",
+    "deckId": "deck_n2_1-50",
+    "front": "感情",
+    "back": {
+      "hiragana": "かんじょう",
+      "meaning": "CẢM TÌNH\nBiểu Cảm Tâm Trạng",
+      "example": "・田中さんはすぐに感情が顔に出る。\n・Cảm xúc của Tanaka ngay lập tức hiện rõ trên khuôn mặt."
+    },
+    "status": "new"
+  },
+  {
     "id": "deck_n2_1-50_card_13",
     "deckId": "deck_n2_1-50",
-    "front": "No12. 敵",
+    "front": "敵",
     "back": {
       "hiragana": "てき",
       "meaning": "ĐỊCH\nKẻ Thù",
@@ -168,7 +166,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_14",
     "deckId": "deck_n2_1-50",
-    "front": "No13. 味方",
+    "front": "味方",
     "back": {
       "hiragana": "みかた",
       "meaning": "VỊ PHƯƠNG\nBạn Bè Đồng Minh",
@@ -179,7 +177,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_15",
     "deckId": "deck_n2_1-50",
-    "front": "No14. 筆者",
+    "front": "筆者",
     "back": {
       "hiragana": "ひっしゃ",
       "meaning": "BÚT GIẢ\nTác Giả",
@@ -190,7 +188,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_16",
     "deckId": "deck_n2_1-50",
-    "front": "No15. 寿命",
+    "front": "寿命",
     "back": {
       "hiragana": "じゅみょう",
       "meaning": "THỌ MỆNH MẠNG\nTuổi Thọ",
@@ -201,7 +199,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_17",
     "deckId": "deck_n2_1-50",
-    "front": "No16. 将来",
+    "front": "将来",
     "back": {
       "hiragana": "しょうらい",
       "meaning": "TƯỚNG LAI\nTương Lai",
@@ -212,7 +210,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_18",
     "deckId": "deck_n2_1-50",
-    "front": "No17. 才能",
+    "front": "才能",
     "back": {
       "hiragana": "さいのう",
       "meaning": "TÀI NĂNG\nTài năng",
@@ -223,7 +221,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_19",
     "deckId": "deck_n2_1-50",
-    "front": "No18. 能力",
+    "front": "能力",
     "back": {
       "hiragana": "のうりょく",
       "meaning": "NĂNG LỰC\nNăng lực",
@@ -234,7 +232,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_20",
     "deckId": "deck_n2_1-50",
-    "front": "No19. 長所",
+    "front": "長所",
     "back": {
       "hiragana": "ちょうしょ",
       "meaning": "TRƯỜNG TRƯỞNG SỞ\nSở Trường",
@@ -245,7 +243,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_21",
     "deckId": "deck_n2_1-50",
-    "front": "No20. 個性",
+    "front": "個性",
     "back": {
       "hiragana": "こせい",
       "meaning": "CÁ TÍNH\nCá tính",
@@ -256,7 +254,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_22",
     "deckId": "deck_n2_1-50",
-    "front": "No21. 遺伝",
+    "front": "遺伝",
     "back": {
       "hiragana": "いでん",
       "meaning": "DỊ TRUYỀN\nDi Truyền",
@@ -267,7 +265,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_23",
     "deckId": "deck_n2_1-50",
-    "front": "No22. 動作",
+    "front": "動作",
     "back": {
       "hiragana": "どうさ",
       "meaning": "ĐỘNG TÁC\nĐộng Tác",
@@ -278,7 +276,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_24",
     "deckId": "deck_n2_1-50",
-    "front": "No23. 真似",
+    "front": "真似",
     "back": {
       "hiragana": "まね",
       "meaning": "CHÂN TỰ\nBắt Chước",
@@ -289,7 +287,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_25",
     "deckId": "deck_n2_1-50",
-    "front": "No24. 睡眠",
+    "front": "睡眠",
     "back": {
       "hiragana": "すいみん",
       "meaning": "THỤY MIÊN\nNgủ",
@@ -300,7 +298,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_26",
     "deckId": "deck_n2_1-50",
-    "front": "No25. 食欲",
+    "front": "食欲",
     "back": {
       "hiragana": "しょくよく",
       "meaning": "THỰC DỤC\nMuốn Ăn",
@@ -311,7 +309,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_27",
     "deckId": "deck_n2_1-50",
-    "front": "No26. 外食",
+    "front": "外食",
     "back": {
       "hiragana": "がいしょく",
       "meaning": "NGOẠI THỰC\nĂn Ngoài Ăn Tiệm",
@@ -322,7 +320,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_28",
     "deckId": "deck_n2_1-50",
-    "front": "No27. 家事",
+    "front": "家事",
     "back": {
       "hiragana": "かじ",
       "meaning": "GIA SỰ\nViệc Nhà",
@@ -333,7 +331,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_29",
     "deckId": "deck_n2_1-50",
-    "front": "No28. 出産",
+    "front": "出産",
     "back": {
       "hiragana": "しゅっさん",
       "meaning": "XUẤT SẢN\nSinh Đẻ",
@@ -344,7 +342,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_30",
     "deckId": "deck_n2_1-50",
-    "front": "No29. 介護",
+    "front": "介護",
     "back": {
       "hiragana": "かいご",
       "meaning": "GIỚI HỘ\nChăm Sóc Chăm Nom",
@@ -355,7 +353,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_31",
     "deckId": "deck_n2_1-50",
-    "front": "No30. 共働き",
+    "front": "共働き",
     "back": {
       "hiragana": "ともばたらき",
       "meaning": "CỘNG ĐỘNG\n2 Vợ Chồng Cùng Làm Việc",
@@ -366,7 +364,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_32",
     "deckId": "deck_n2_1-50",
-    "front": "No31. 出勤",
+    "front": "出勤",
     "back": {
       "hiragana": "しゅっきん",
       "meaning": "XUẤT CẦN\nĐi Làm",
@@ -377,7 +375,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_33",
     "deckId": "deck_n2_1-50",
-    "front": "No32. 出世",
+    "front": "出世",
     "back": {
       "hiragana": "しゅっせ",
       "meaning": "XUẤT THẾ\nThành Đạt",
@@ -388,7 +386,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_34",
     "deckId": "deck_n2_1-50",
-    "front": "No33. 地位",
+    "front": "地位",
     "back": {
       "hiragana": "ちい",
       "meaning": "ĐỊA VỊ\nVị Trí",
@@ -399,7 +397,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_35",
     "deckId": "deck_n2_1-50",
-    "front": "No34. 受験",
+    "front": "受験",
     "back": {
       "hiragana": "じゅけん",
       "meaning": "THỤ NGHIỆM\nTham Gia Kỳ Thi",
@@ -410,7 +408,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_36",
     "deckId": "deck_n2_1-50",
-    "front": "No35. 専攻",
+    "front": "専攻",
     "back": {
       "hiragana": "せんこう",
       "meaning": "CHUYÊN CÔNG\nChuyên Ngành",
@@ -421,7 +419,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_37",
     "deckId": "deck_n2_1-50",
-    "front": "No36. 支度",
+    "front": "支度",
     "back": {
       "hiragana": "したく",
       "meaning": "CHI ĐỘ\nChuẩn Bị",
@@ -432,7 +430,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_38",
     "deckId": "deck_n2_1-50",
-    "front": "No37. 全身",
+    "front": "全身",
     "back": {
       "hiragana": "ぜんしん",
       "meaning": "TOÀN THÂN\nToàn Bộ Cơ Thể",
@@ -443,7 +441,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_39",
     "deckId": "deck_n2_1-50",
-    "front": "No38. しわ",
+    "front": "しわ",
     "back": {
       "hiragana": "しわ",
       "meaning": "Nếp nhăn",
@@ -454,7 +452,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_40",
     "deckId": "deck_n2_1-50",
-    "front": "No39. 服装",
+    "front": "服装",
     "back": {
       "hiragana": "ふくそう",
       "meaning": "PHỤC TRANG\nQuần Áo Trang Phục",
@@ -465,7 +463,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_41",
     "deckId": "deck_n2_1-50",
-    "front": "No40. 礼",
+    "front": "礼",
     "back": {
       "hiragana": "れい",
       "meaning": "Lễ\nCảm Ơn",
@@ -476,7 +474,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_42",
     "deckId": "deck_n2_1-50",
-    "front": "No41. お世辞",
+    "front": "お世辞",
     "back": {
       "hiragana": "おせじ",
       "meaning": "THẾ TỪ\nNịnh Ca Tụng",
@@ -487,7 +485,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_43",
     "deckId": "deck_n2_1-50",
-    "front": "No42. 言い訳",
+    "front": "言い訳",
     "back": {
       "hiragana": "いいわけ",
       "meaning": "NGÔN DỊCH\nLý Do",
@@ -498,7 +496,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_44",
     "deckId": "deck_n2_1-50",
-    "front": "No43. 話題",
+    "front": "話題",
     "back": {
       "hiragana": "わだい",
       "meaning": "THOẠI ĐỀ\nChủ Đề",
@@ -509,7 +507,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_45",
     "deckId": "deck_n2_1-50",
-    "front": "No44. 秘密",
+    "front": "秘密",
     "back": {
       "hiragana": "ひみつ",
       "meaning": "TẤT MẬT\nBí Mật",
@@ -520,7 +518,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_46",
     "deckId": "deck_n2_1-50",
-    "front": "No45. 尊敬",
+    "front": "尊敬",
     "back": {
       "hiragana": "そんけい",
       "meaning": "TÔN KÍNH\nTôn Trọng",
@@ -531,7 +529,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_47",
     "deckId": "deck_n2_1-50",
-    "front": "No46. 謙遜",
+    "front": "謙遜",
     "back": {
       "hiragana": "けんそん",
       "meaning": "KHIÊM TỐN\nKhiêm Tốn",
@@ -542,7 +540,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_48",
     "deckId": "deck_n2_1-50",
-    "front": "No47. 期待",
+    "front": "期待",
     "back": {
       "hiragana": "きたい",
       "meaning": "KÌ ĐÃI\nMong Chờ",
@@ -553,7 +551,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_49",
     "deckId": "deck_n2_1-50",
-    "front": "No48. 苦労",
+    "front": "苦労",
     "back": {
       "hiragana": "くろう",
       "meaning": "KHỔ LAO\nLo Lắng Vất Vả",
@@ -564,7 +562,7 @@ export const cardsData = [
   {
     "id": "deck_n2_1-50_card_50",
     "deckId": "deck_n2_1-50",
-    "front": "No49. 意志",
+    "front": "意志",
     "back": {
       "hiragana": "いし",
       "meaning": "Ý\nchí Ý Chí",
@@ -575,550 +573,550 @@ export const cardsData = [
   {
     "id": "deck_n2_791-840_card_1",
     "deckId": "deck_n2_791-840",
-    "front": "No791. インテリア",
+    "front": "インテリア",
     "back": {
       "hiragana": "",
       "meaning": "Nội thất",
-      "example": "・友達の部屋はインテリアの趣味がいい。・Bạn tôi có gu thiết kế nội thất trong phòng rất tốt."
+      "example": "・友達の部屋はインテリアの趣味がいい。\n・Bạn tôi có gu thiết kế nội thất trong phòng rất tốt."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_2",
     "deckId": "deck_n2_791-840",
-    "front": "No792. コーナー",
+    "front": "コーナー",
     "back": {
       "hiragana": "",
       "meaning": "Góc",
-      "example": "・冬になると デパートにはお歳暮のコーナーが設けられる。・Vào mùa đông, các cửa hàng bách hóa có góc quà tặng cuối năm."
+      "example": "・冬になると デパートにはお歳暮のコーナーが設けられる。\n・Vào mùa đông, các cửa hàng bách hóa có góc quà tặng cuối năm."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_3",
     "deckId": "deck_n2_791-840",
-    "front": "No793. カウンター",
+    "front": "カウンター",
     "back": {
       "hiragana": "",
       "meaning": "Quầy thông tin",
-      "example": "・ デパートには入り口に案内のカウンターがある。・ Cửa hàng bách hóa có quầy thông tin ở lối vào."
+      "example": "・ デパートには入り口に案内のカウンターがある。\n・Cửa hàng bách hóa có quầy thông tin ở lối vào."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_4",
     "deckId": "deck_n2_791-840",
-    "front": "No794. スペース",
+    "front": "スペース",
     "back": {
       "hiragana": "",
       "meaning": "Không gian",
-      "example": "・部屋に大型テレビを置きたいが、 スペースがない。・Tôi muốn đặt một chiếc TV lớn trong phòng nhưng không có chỗ."
+      "example": "・部屋に大型テレビを置きたいが、 スペースがない。\n・Tôi muốn đặt một chiếc TV lớn trong phòng nhưng không có chỗ."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_5",
     "deckId": "deck_n2_791-840",
-    "front": "No795. オープン",
+    "front": "オープン",
     "back": {
       "hiragana": "",
       "meaning": "Mở",
-      "example": "・駅前に新しいデパートがオープンした。・Một cửa hàng bách hóa mới đã được mở trước nhà ga."
+      "example": "・駅前に新しいデパートがオープンした。\n・Một cửa hàng bách hóa mới đã được mở trước nhà ga."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_6",
     "deckId": "deck_n2_791-840",
-    "front": "No796. センター",
+    "front": "センター",
     "back": {
       "hiragana": "",
       "meaning": "Trung tâm",
-      "example": "・ 駅前のショッピングセンターで買い物をする。・Mua sắm tại trung tâm mua sắm trước nhà ga."
+      "example": "・ 駅前のショッピングセンターで買い物をする。\n・Mua sắm tại trung tâm mua sắm trước nhà ga."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_7",
     "deckId": "deck_n2_791-840",
-    "front": "No797. カルチャー",
+    "front": "カルチャー",
     "back": {
       "hiragana": "",
       "meaning": "Văn hóa",
-      "example": "・ 外国の生活でカルチャーショックを受けることがある。・ Bạn có thể bị sốc văn hóa khi sống ở nước ngoài."
+      "example": "・ 外国の生活でカルチャーショックを受けることがある。\n・Bạn có thể bị sốc văn hóa khi sống ở nước ngoài."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_8",
     "deckId": "deck_n2_791-840",
-    "front": "No798. ブーム",
+    "front": "ブーム",
     "back": {
       "hiragana": "",
       "meaning": "Nở rộ",
-      "example": "・ 1960年代にフォークソングがブームになった。・Dân ca trở nên phổ biến vào những năm 1960."
+      "example": "・ 1960年代にフォークソングがブームになった。\n・Dân ca trở nên phổ biến vào những năm 1960."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_9",
     "deckId": "deck_n2_791-840",
-    "front": "No799. インフォメーション",
+    "front": "インフォメーション",
     "back": {
       "hiragana": "",
       "meaning": "Thông tin",
-      "example": "・企業の詳しい インフォメーションは ホームページに載っている。・Thông tin chi tiết về công ty có thể được tìm thấy trên trang web của công ty."
+      "example": "・企業の詳しい インフォメーションは ホームページに載っている。\n・Thông tin chi tiết về công ty có thể được tìm thấy trên trang web của công ty."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_10",
     "deckId": "deck_n2_791-840",
-    "front": "No800. キャッチ",
+    "front": "キャッチ",
     "back": {
       "hiragana": "",
       "meaning": "Bắt, tóm được",
-      "example": "・ 情報をキャッチする。・Nắm bắt thông tin."
+      "example": "・ 情報をキャッチする。\n・Nắm bắt thông tin."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_11",
     "deckId": "deck_n2_791-840",
-    "front": "No801. メディア",
+    "front": "メディア",
     "back": {
       "hiragana": "",
       "meaning": "Truyền thông",
-      "example": "・今は、様々なメディアから情報を得ることができる。・Ngày nay, chúng ta có thể lấy thông tin từ nhiều phương tiện truyền thông khác nhau."
+      "example": "・今は、様々なメディアから情報を得ることができる。\n・Ngày nay, chúng ta có thể lấy thông tin từ nhiều phương tiện truyền thông khác nhau."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_12",
     "deckId": "deck_n2_791-840",
-    "front": "No802. コメント",
+    "front": "コメント",
     "back": {
       "hiragana": "",
       "meaning": "Bình luận",
-      "example": "・ 評論家がテレビで経済についてコメントしていた。・Một nhà phê bình đang bình luận về nền kinh tế trên TV."
+      "example": "・ 評論家がテレビで経済についてコメントしていた。\n・Một nhà phê bình đang bình luận về nền kinh tế trên TV."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_13",
     "deckId": "deck_n2_791-840",
-    "front": "No803. コラム",
+    "front": "コラム",
     "back": {
       "hiragana": "",
       "meaning": "Cột",
-      "example": "・ 新聞や雑誌には多くのコラムがある。・Báo và tạp chí có nhiều chuyên mục."
+      "example": "・ 新聞や雑誌には多くのコラムがある。\n・Báo và tạp chí có nhiều chuyên mục."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_14",
     "deckId": "deck_n2_791-840",
-    "front": "No804. エピソード",
+    "front": "エピソード",
     "back": {
       "hiragana": "",
       "meaning": "Bài , tập",
-      "example": "・ 母は父との出会いの時のエピソードを話してくれた。・Mẹ tôi kể cho tôi nghe một câu chuyện về việc bà đã gặp bố tôi như thế nào."
+      "example": "・ 母は父との出会いの時のエピソードを話してくれた。\n・Mẹ tôi kể cho tôi nghe một câu chuyện về việc bà đã gặp bố tôi như thế nào."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_15",
     "deckId": "deck_n2_791-840",
-    "front": "No805. アリバイ",
+    "front": "アリバイ",
     "back": {
       "hiragana": "",
       "meaning": "Chứng cứ ngoại phạm",
-      "example": "・ 彼には 事件 当日のアリバイがある。・Anh ta có bằng chứng ngoại phạm vào ngày xảy ra vụ việc."
+      "example": "・ 彼には 事件 当日のアリバイがある。\n・Anh ta có bằng chứng ngoại phạm vào ngày xảy ra vụ việc."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_16",
     "deckId": "deck_n2_791-840",
-    "front": "No806. シリーズ",
+    "front": "シリーズ",
     "back": {
       "hiragana": "",
       "meaning": "Phim dài tập",
-      "example": "・ 『語彙トレーニング」の本はシリーズで出ている。・Sách `'Luyện Từ Vựng'' được xuất bản thành bộ."
+      "example": "・ 『語彙トレーニング」の本はシリーズで出ている。\n・Sách `'Luyện Từ Vựng'' được xuất bản thành bộ."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_17",
     "deckId": "deck_n2_791-840",
-    "front": "No807. ポイント",
+    "front": "ポイント",
     "back": {
       "hiragana": "",
       "meaning": "Điểm",
-      "example": "・仕事を成功させるポイントは、時間の無駄を出さないことだ。・Chìa khóa thành công trong công việc là tránh lãng phí thời gian."
+      "example": "・仕事を成功させるポイントは、時間の無駄を出さないことだ。\n・Chìa khóa thành công trong công việc là tránh lãng phí thời gian."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_18",
     "deckId": "deck_n2_791-840",
-    "front": "No808. キー",
+    "front": "キー",
     "back": {
       "hiragana": "",
       "meaning": "Khóa",
-      "example": "・ 車のキーを中に入れたまま ロックしてしまった。・Tôi đã khóa xe mà vẫn lỡ để chìa khóa ở bên trong xe."
+      "example": "・ 車のキーを中に入れたまま ロックしてしまった。\n・Tôi đã khóa xe mà vẫn lỡ để chìa khóa ở bên trong xe."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_19",
     "deckId": "deck_n2_791-840",
-    "front": "No809. マスター",
+    "front": "マスター",
     "back": {
       "hiragana": "",
       "meaning": "Thông thạo",
-      "example": "・独学で日本語をマスターした。・Tôi thành thạo tiếng Nhật thông qua việc tự học."
+      "example": "・独学で日本語をマスターした。\n・Tôi thành thạo tiếng Nhật thông qua việc tự học."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_20",
     "deckId": "deck_n2_791-840",
-    "front": "No810. ビジネス",
+    "front": "ビジネス",
     "back": {
       "hiragana": "",
       "meaning": "Kinh doanh",
-      "example": "・ 彼はビジネスで世界中を飛び回っている。・Anh ấy đi khắp thế giới để kinh doanh."
+      "example": "・ 彼はビジネスで世界中を飛び回っている。\n・Anh ấy đi khắp thế giới để kinh doanh."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_21",
     "deckId": "deck_n2_791-840",
-    "front": "No811. キャリア",
+    "front": "キャリア",
     "back": {
       "hiragana": "",
       "meaning": "Nghề nghiệp",
-      "example": "・ 社会人としてのキャリアを積んでから大学院に入る人が増えた。・Số người vào học cao khi còn đang đi làm đã tăng lên."
+      "example": "・ 社会人としてのキャリアを積んでから大学院に入る人が増えた。\n・Số người vào học cao khi còn đang đi làm đã tăng lên."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_22",
     "deckId": "deck_n2_791-840",
-    "front": "No812. ベテラン",
+    "front": "ベテラン",
     "back": {
       "hiragana": "",
       "meaning": "Người có kinh nghiệm",
-      "example": "・ 田中さんは 教師歴20年のベテランだ。・Thầy Tanaka là giáo viên kỳ cựu với 20 năm kinh nghiệm."
+      "example": "・ 田中さんは 教師歴20年のベテランだ。\n・Thầy Tanaka là giáo viên kỳ cựu với 20 năm kinh nghiệm."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_23",
     "deckId": "deck_n2_791-840",
-    "front": "No813. フリー",
+    "front": "フリー",
     "back": {
       "hiragana": "",
       "meaning": "Người làm nghề tự do",
-      "example": "・ 彼はフリーのカメラマンをしている。・Anh ấy là một nhiếp ảnh gia tự do."
+      "example": "・ 彼はフリーのカメラマンをしている。\n・Anh ấy là một nhiếp ảnh gia tự do."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_24",
     "deckId": "deck_n2_791-840",
-    "front": "No814. エコノミー",
+    "front": "エコノミー",
     "back": {
       "hiragana": "",
       "meaning": "Kinh tế",
-      "example": "・飛行機はいつもエコノミークラスに乗っている。・Tôi luôn bay ở hạng phổ thông trên máy bay."
+      "example": "・飛行機はいつもエコノミークラスに乗っている。\n・Tôi luôn bay ở hạng phổ thông trên máy bay."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_25",
     "deckId": "deck_n2_791-840",
-    "front": "No815. キャッシュ",
+    "front": "キャッシュ",
     "back": {
       "hiragana": "",
       "meaning": "Tiền mặt",
-      "example": "・ 彼は車の代金をキャッシュで払ったそうだ。・Có vẻ như anh ta đã trả tiền mua xe bằng tiền mặt."
+      "example": "・ 彼は車の代金をキャッシュで払ったそうだ。\n・Có vẻ như anh ta đã trả tiền mua xe bằng tiền mặt."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_26",
     "deckId": "deck_n2_791-840",
-    "front": "No816. インフレ",
+    "front": "インフレ",
     "back": {
       "hiragana": "",
       "meaning": "Lạm phát",
-      "example": "・ インフレで物価が上昇している。・Giá cả đang tăng do lạm phát."
+      "example": "・ インフレで物価が上昇している。\n・Giá cả đang tăng do lạm phát."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_27",
     "deckId": "deck_n2_791-840",
-    "front": "No817. デモ",
+    "front": "デモ",
     "back": {
       "hiragana": "",
       "meaning": "Demo",
-      "example": "・ 増税に抗議して、国のあちこちでデモが行われた。・Các cuộc biểu tình được tổ chức khắp cả nước để phản đối việc tăng thuế."
+      "example": "・ 増税に抗議して、国のあちこちでデモが行われた。\n・Các cuộc biểu tình được tổ chức khắp cả nước để phản đối việc tăng thuế."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_28",
     "deckId": "deck_n2_791-840",
-    "front": "No818. メーカー",
+    "front": "メーカー",
     "back": {
       "hiragana": "",
       "meaning": "Nhà sản xuất",
-      "example": "・ メーカーは海外に工場を持っていることが多い。・Các nhà sản xuất thường có nhà máy ở nước ngoài."
+      "example": "・ メーカーは海外に工場を持っていることが多い。\n・Các nhà sản xuất thường có nhà máy ở nước ngoài."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_29",
     "deckId": "deck_n2_791-840",
-    "front": "No819. システム",
+    "front": "システム",
     "back": {
       "hiragana": "",
       "meaning": "Hệ thống",
-      "example": "・ この会は 、紹介者がいないと入会できない システムになっている。・Nhóm này có một quy tắc là bạn phải được giới thiệu mới được tham gia nhóm."
+      "example": "・ この会は 、紹介者がいないと入会できない システムになっている。\n・Nhóm này có một quy tắc là bạn phải được giới thiệu mới được tham gia nhóm."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_30",
     "deckId": "deck_n2_791-840",
-    "front": "No820. ケース",
+    "front": "ケース",
     "back": {
       "hiragana": "",
       "meaning": "Hộp",
-      "example": "・ 指輪をケースにしまった。・Tôi đã đặt chiếc nhẫn vào hộp."
+      "example": "・ 指輪をケースにしまった。\n・Tôi đã đặt chiếc nhẫn vào hộp."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_31",
     "deckId": "deck_n2_791-840",
-    "front": "No821. パターン",
+    "front": "パターン",
     "back": {
       "hiragana": "",
       "meaning": "Kiểu",
-      "example": "・最近は大学入試にも色々なパターンがある。・Gần đây có nhiều hình thức thi tuyển sinh đại học khác nhau."
+      "example": "・最近は大学入試にも色々なパターンがある。\n・Gần đây có nhiều hình thức thi tuyển sinh đại học khác nhau."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_32",
     "deckId": "deck_n2_791-840",
-    "front": "No822. プラン",
+    "front": "プラン",
     "back": {
       "hiragana": "",
       "meaning": "Kế hoạch",
-      "example": "・ 両親は、定年後に海外移住するプランを立てている。・Bố mẹ tôi dự định chuyển ra nước ngoài sau khi nghỉ hưu."
+      "example": "・ 両親は、定年後に海外移住するプランを立てている。\n・Bố mẹ tôi dự định chuyển ra nước ngoài sau khi nghỉ hưu."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_33",
     "deckId": "deck_n2_791-840",
-    "front": "No823. トラブル",
+    "front": "トラブル",
     "back": {
       "hiragana": "",
       "meaning": "Vấn đề",
-      "example": "・テレビの音のことでアパートの隣人とトラブルになった。・Tôi gặp vấn đề với việc người hàng xóm bật tivi quá to."
+      "example": "・テレビの音のことでアパートの隣人とトラブルになった。\n・Tôi gặp vấn đề với việc người hàng xóm bật tivi quá to."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_34",
     "deckId": "deck_n2_791-840",
-    "front": "No824. エラー",
+    "front": "エラー",
     "back": {
       "hiragana": "",
       "meaning": "Lỗi",
-      "example": "・ パソコンに入力していたら、画面にエラーの表示が出た。・Khi tôi đang nhập thông tin vào máy tính, màn hình xuất hiện thông báo lỗi."
+      "example": "・ パソコンに入力していたら、画面にエラーの表示が出た。\n・Khi tôi đang nhập thông tin vào máy tính, màn hình xuất hiện thông báo lỗi."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_35",
     "deckId": "deck_n2_791-840",
-    "front": "No825. クレーム",
+    "front": "クレーム",
     "back": {
       "hiragana": "",
       "meaning": "Phàn nàn",
-      "example": "・ 「買った肉が変なにおいがする」と、スーパーにクレームがあった。・Có người phàn nàn ở siêu thị rằng thịt họ mua có mùi lạ."
+      "example": "・ 「買った肉が変なにおいがする」と、スーパーにクレームがあった。\n・Có người phàn nàn ở siêu thị rằng thịt họ mua có mùi lạ."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_36",
     "deckId": "deck_n2_791-840",
-    "front": "No826. キャンセル",
+    "front": "キャンセル",
     "back": {
       "hiragana": "",
       "meaning": "Hủy",
-      "example": "・ ホテルの予約をキャンセルした。・Tôi đã hủy đặt phòng khách sạn."
+      "example": "・ ホテルの予約をキャンセルした。\n・Tôi đã hủy đặt phòng khách sạn."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_37",
     "deckId": "deck_n2_791-840",
-    "front": "No827. ストップ",
+    "front": "ストップ",
     "back": {
       "hiragana": "",
       "meaning": "Dừng",
-      "example": "・ 踏切事故で電車が1時間ストップした。・Tàu bị dừng trong một giờ do tai nạn băng qua đường sắt."
+      "example": "・ 踏切事故で電車が1時間ストップした。\n・Tàu bị dừng trong một giờ do tai nạn băng qua đường sắt."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_38",
     "deckId": "deck_n2_791-840",
-    "front": "No828. カット",
+    "front": "カット",
     "back": {
       "hiragana": "",
       "meaning": "Cắt giảm",
-      "example": "・ ケーキを8つにカットした。・Tôi cắt bánh thành 8 miếng."
+      "example": "・ ケーキを8つにカットした。\n・Tôi cắt bánh thành 8 miếng."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_39",
     "deckId": "deck_n2_791-840",
-    "front": "No829. カバー",
+    "front": "カバー",
     "back": {
       "hiragana": "",
       "meaning": "Bao phủ",
-      "example": "・ 私の仕事のミスを同僚がカバーしてくれた。・Đồng nghiệp của tôi đã che đậy lỗi lầm cho tôi trong công việc."
+      "example": "・ 私の仕事のミスを同僚がカバーしてくれた。\n・Đồng nghiệp của tôi đã che đậy lỗi lầm cho tôi trong công việc."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_40",
     "deckId": "deck_n2_791-840",
-    "front": "No830. リハビリ",
+    "front": "リハビリ",
     "back": {
       "hiragana": "",
       "meaning": "Điều trị phục hồi",
-      "example": "・ 骨折で入院し、 退院後もしばらく リハビリのため病院に通った。・Tôi nhập viện vì bị gãy xương, thậm chí sau khi xuất viện tôi vẫn tiếp tục đến bệnh viện để phục hồi chức năng một thời gian."
+      "example": "・ 骨折で入院し、 退院後もしばらく リハビリのため病院に通った。\n・Tôi nhập viện vì bị gãy xương, thậm chí sau khi xuất viện tôi vẫn tiếp tục đến bệnh viện để phục hồi chức năng một thời gian."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_41",
     "deckId": "deck_n2_791-840",
-    "front": "No831. プレッシャー",
+    "front": "プレッシャー",
     "back": {
       "hiragana": "",
       "meaning": "Áp lực",
-      "example": "・ 「がんばれ」と言われると、かえってプレッシャーになることがある。・Việc được yêu cầu \"\"cố gắng hết sức\"\" thực sự có thể gây áp lực cho bạn."
+      "example": "・ 「がんばれ」と言われると、かえってプレッシャーになることがある。\n・Việc được yêu cầu \"\"cố gắng hết sức\"\" thực sự có thể gây áp lực cho bạn."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_42",
     "deckId": "deck_n2_791-840",
-    "front": "No832. カウンセリング",
+    "front": "カウンセリング",
     "back": {
       "hiragana": "",
       "meaning": "Hướng dẫn",
-      "example": "・ 学校で子供達にカウンセリングする仕事をしている。・Tôi làm việc tại một trường tư vấn trẻ em."
+      "example": "・ 学校で子供達にカウンセリングする仕事をしている。\n・Tôi làm việc tại một trường tư vấn trẻ em."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_43",
     "deckId": "deck_n2_791-840",
-    "front": "No833. キャラクター",
+    "front": "キャラクター",
     "back": {
       "hiragana": "",
       "meaning": "Tính cách",
-      "example": "・ アニメや漫画のキャラクターが商品化されている。・Các nhân vật trong anime và manga được thương mại hóa."
+      "example": "・ アニメや漫画のキャラクターが商品化されている。\n・Các nhân vật trong anime và manga được thương mại hóa."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_44",
     "deckId": "deck_n2_791-840",
-    "front": "No834. ユニーク",
+    "front": "ユニーク",
     "back": {
       "hiragana": "",
       "meaning": "Độc đáo, độc nhất",
-      "example": "・ 彼女は ユニークな性格だ。・Cô ấy có một tính cách độc đáo."
+      "example": "・ 彼女は ユニークな性格だ。\n・Cô ấy có một tính cách độc đáo."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_45",
     "deckId": "deck_n2_791-840",
-    "front": "No835. ルーズ",
+    "front": "ルーズ",
     "back": {
       "hiragana": "",
       "meaning": "Lỏng lẻo",
-      "example": "・あの人は時間にルーズだ。・Người đó buông thả thời gian."
+      "example": "・あの人は時間にルーズだ。\n・Người đó buông thả thời gian."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_46",
     "deckId": "deck_n2_791-840",
-    "front": "No836. ロマンチック",
+    "front": "ロマンチック",
     "back": {
       "hiragana": "",
       "meaning": "Lãng mạn",
-      "example": "・ デートするならロマンチックな場所がいい。・Nếu bạn đang hẹn hò thì một nơi lãng mạn là tốt nhất."
+      "example": "・ デートするならロマンチックな場所がいい。\n・Nếu bạn đang hẹn hò thì một nơi lãng mạn là tốt nhất."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_47",
     "deckId": "deck_n2_791-840",
-    "front": "No837. センス",
+    "front": "センス",
     "back": {
       "hiragana": "",
       "meaning": "Nhạy cảm, cảm giác",
-      "example": "・ 彼女はいつもセンスのいい服を着ている。・Cô ấy luôn mặc quần áo trang nhã."
+      "example": "・ 彼女はいつもセンスのいい服を着ている。\n・Cô ấy luôn mặc quần áo trang nhã."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_48",
     "deckId": "deck_n2_791-840",
-    "front": "No838. エコロジー",
+    "front": "エコロジー",
     "back": {
       "hiragana": "",
       "meaning": "Sinh thái",
-      "example": "・ エコの観点から、なるべく ゴミが出ないように生活している。・Từ góc độ thân thiện với môi trường, tôi cố gắng sống theo cách tạo ra ít rác nhất có thể."
+      "example": "・ エコの観点から、なるべく ゴミが出ないように生活している。\n・Từ góc độ thân thiện với môi trường, tôi cố gắng sống theo cách tạo ra ít rác nhất có thể."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_49",
     "deckId": "deck_n2_791-840",
-    "front": "No839. ダム",
+    "front": "ダム",
     "back": {
       "hiragana": "",
       "meaning": "Con dập",
-      "example": "・山奥にダムが建設された。・Một con đập được xây dựng sâu trong núi."
+      "example": "・山奥にダムが建設された。\n・Một con đập được xây dựng sâu trong núi."
     },
     "status": "new"
   },
   {
     "id": "deck_n2_791-840_card_50",
     "deckId": "deck_n2_791-840",
-    "front": "No840. コンクリート",
+    "front": "コンクリート",
     "back": {
       "hiragana": "",
       "meaning": "Xi măng",
-      "example": "・ この壁はコンクリートでできている。・Bức tường này được làm bằng bê tông."
+      "example": "・ この壁はコンクリートでできている。\n・Bức tường này được làm bằng bê tông."
     },
     "status": "new"
   }
