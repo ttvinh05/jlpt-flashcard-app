@@ -5,6 +5,7 @@ import DeckDetails from "@/pages/DeckDetails"
 import StudySession from "@/pages/StudySession"
 import DeckList from "@/pages/DeckList"
 import DashboardLayout from "@/components/Layout/DashboardLayout"
+import GlobalErrorBoundary from "@/components/Common/GlobalErrorBoundary"
 
 const router = createBrowserRouter([
   {
@@ -26,11 +27,13 @@ const router = createBrowserRouter([
     children: [
       { 
         path: "deck/:id", 
-        element: <DeckDetails />
+        element: <DeckDetails />,
+        errorElement: <GlobalErrorBoundary />
       },
       { 
         path: "study/:id", 
-        element: <StudySession />
+        element: <StudySession />,
+        errorElement: <GlobalErrorBoundary />
       },
     ]
   }
