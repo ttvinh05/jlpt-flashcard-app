@@ -18,18 +18,18 @@ const router = createBrowserRouter([
       {
         path: "decks",
         element: <DeckList />
-      }
+      },
+      { 
+        path: "deck/:id", 
+        element: <DeckDetails />,
+        errorElement: <GlobalErrorBoundary />
+      },
     ]
   },
   {
     path: "/",
     element: <MainLayout />,
     children: [
-      { 
-        path: "deck/:id", 
-        element: <DeckDetails />,
-        errorElement: <GlobalErrorBoundary />
-      },
       { 
         path: "study/:id", 
         element: <StudySession />,
