@@ -4,9 +4,11 @@ import HeroBanner from "@/components/Home/HeroBanner";
 import WeeklyProgress from "@/components/Home/WeeklyProgress";
 import HomeDeckList from "@/components/Home/HomeDeckList";
 import StudySidebar from "@/components/Home/StudySidebar";
-import { decksData } from "@/utils/mockData";
-
+import { useDecks } from "@/hooks/useDecks";
 const HomePage = () => {
+
+  const { decks } = useDecks();
+  
   return (
     <div className="flex min-h-screen bg-zinc-950 text-zinc-50 font-sans">
       <main className="flex-1 flex overflow-hidden">
@@ -18,7 +20,7 @@ const HomePage = () => {
             <StudyStats />
             <HeroBanner />
             <WeeklyProgress percentage={70} />
-            <HomeDeckList decks={decksData} />
+            <HomeDeckList decks={decks} />
           </div>
         </section>
 

@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { useNavigate } from "react-router";
 import DeckCard from "@/components/Deck/DeckCard";
-import { decksData } from "@/utils/mockData";
 import { useState } from "react";
 import {
   DropdownMenu,
@@ -11,12 +10,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { FiChevronDown, FiCheck, FiPlay } from 'react-icons/fi';
+import { useDecks } from "@/hooks/useDecks";
 
 const FILTER_TABS = ['Tất cả', 'N1', 'N2', 'N3', 'N4', 'N5', 'Khác'];
 const FILTER_DROPDOWN = ['Mới nhất', 'Cũ nhất', 'Tiến độ (%)']
 
 const DeckList = () => {
   const navigate = useNavigate();
+  const { decks } = useDecks();
 
   const [isTabActive, setIsTabActive] = useState("Tất cả");
   const [isDropdown, setIsDropDown] = useState("Mới nhất")
@@ -25,7 +26,7 @@ const DeckList = () => {
     setIsTabActive(lvl);
   };
 
-  const deckDataFiltered = decksData.filter(
+  const deckDataFiltered = decks.filter(
     (item) => isTabActive === "Tất cả" || item.level === isTabActive
   );
 
