@@ -1,24 +1,25 @@
-import * as React from "react"
 import { cva } from "class-variance-authority";
-import { Slot } from "radix-ui"
+import { Slot } from "@radix-ui/react-slot"
 
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
-  "group/badge inline-flex h-5 w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-4xl border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3!",
+  // Gán chuẩn mới: bo góc vừa phải (rounded-lg), padding thoải mái (px-3 py-1)
+  "group/badge inline-flex w-fit shrink-0 items-center justify-center gap-1.5 rounded-lg border border-transparent px-3 py-1 text-xs font-semibold whitespace-nowrap transition-all select-none [&>svg]:pointer-events-none [&>svg]:size-3",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground [a]:hover:bg-primary/80",
-        secondary:
-          "bg-secondary text-secondary-foreground [a]:hover:bg-secondary/80",
-        destructive:
-          "bg-destructive/10 text-destructive focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:focus-visible:ring-destructive/40 [a]:hover:bg-destructive/20",
-        outline:
-          "border-border text-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground",
-        ghost:
-          "hover:bg-muted hover:text-muted-foreground dark:hover:bg-muted/50",
-        link: "text-primary underline-offset-4 hover:underline",
+        default: "bg-blue-600/80 text-zinc-50 shadow-sm shadow-blue-900/20",
+        
+        secondary: "bg-white/10 text-zinc-300",
+        
+        destructive: "bg-rose-500/15 text-rose-400 border border-rose-500/30",
+        
+        // Variant Outline chủ lực: Nền trong suốt kính mờ, viền mờ. 
+        // Lớp nền và màu chữ sẽ do prop truyền từ ngoài (như LEVEL_COLORS) quyết định.
+        outline: "border-white/20 bg-white/5 backdrop-blur-sm shadow-sm",
+        
+        ghost: "hover:bg-white/10 text-zinc-400 hover:text-zinc-50",
       },
     },
     defaultVariants: {
@@ -33,7 +34,7 @@ function Badge({
   asChild = false,
   ...props
 }) {
-  const Comp = asChild ? Slot.Root : "span"
+  const Comp = asChild ? Slot : "span"
 
   return (
     <Comp
@@ -44,4 +45,5 @@ function Badge({
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export { Badge, badgeVariants }

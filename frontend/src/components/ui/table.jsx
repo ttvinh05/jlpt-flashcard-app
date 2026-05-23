@@ -1,6 +1,3 @@
-"use client"
-
-import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -25,7 +22,8 @@ function TableHeader({
   return (
     <thead
       data-slot="table-header"
-      className={cn("[&_tr]:border-b", className)}
+      // Header có nền đen mờ và viền dưới trắng mờ
+      className={cn("bg-black/40 border-b border-white/5", className)}
       {...props} />
   );
 }
@@ -49,7 +47,7 @@ function TableFooter({
   return (
     <tfoot
       data-slot="table-footer"
-      className={cn("border-t bg-muted/50 font-medium [&>tr]:last:border-b-0", className)}
+      className={cn("border-t border-white/5 bg-white/5 font-medium [&>tr]:last:border-b-0", className)}
       {...props} />
   );
 }
@@ -61,8 +59,9 @@ function TableRow({
   return (
     <tr
       data-slot="table-row"
+      // Border mờ giữa các hàng, đổi màu kính mờ khi hover
       className={cn(
-        "border-b transition-colors hover:bg-muted/50 has-aria-expanded:bg-muted/50 data-[state=selected]:bg-muted",
+        "border-b border-white/5 transition-colors hover:bg-white/5 data-[state=selected]:bg-white/10",
         className
       )}
       {...props} />
@@ -76,8 +75,9 @@ function TableHead({
   return (
     <th
       data-slot="table-head"
+      // Chữ header mặc định màu xám (zinc-400)
       className={cn(
-        "h-10 px-2 text-left align-middle font-medium whitespace-nowrap text-foreground [&:has([role=checkbox])]:pr-0",
+        "h-10 px-2 text-left align-middle font-medium whitespace-nowrap text-zinc-400 [&:has([role=checkbox])]:pr-0",
         className
       )}
       {...props} />
@@ -106,7 +106,7 @@ function TableCaption({
   return (
     <caption
       data-slot="table-caption"
-      className={cn("mt-4 text-sm text-muted-foreground", className)}
+      className={cn("mt-4 text-sm text-zinc-500", className)}
       {...props} />
   );
 }
