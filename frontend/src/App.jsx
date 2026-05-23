@@ -1,15 +1,17 @@
 import { createBrowserRouter, RouterProvider } from "react-router"
-import MainLayout from "@/components/Layout/MainLayout"
 import HomePage from "@/pages/Homepage"
 import DeckDetails from "@/pages/DeckDetails"
-import StudySession from "@/pages/StudySession"
+import StudyFlashcard from "@/pages/StudyFlashcard"
 import DeckList from "@/pages/DeckList"
-import DashboardLayout from "@/components/Layout/DashboardLayout"
+import MainLayout from "@/components/Layout/MainLayout"
 import GlobalErrorBoundary from "@/components/Common/GlobalErrorBoundary"
+import StudyLayout from "@/components/Layout/StudyLayout"
 
 const router = createBrowserRouter([
   {
-    element: <DashboardLayout />, 
+    path: "/",
+    element: <MainLayout />, 
+    errorElement: <GlobalErrorBoundary />,
     children: [
       {
         index: true, 
@@ -21,20 +23,19 @@ const router = createBrowserRouter([
       },
       { 
         path: "deck/:id", 
-        element: <DeckDetails />,
-        errorElement: <GlobalErrorBoundary />
+        element: <DeckDetails />
       },
     ]
   },
   {
-    path: "/",
-    element: <MainLayout />,
+    path: "/study",
+    element: <StudyLayout />,
+    errorElement: <GlobalErrorBoundary />,
     children: [
-      { 
-        path: "study/:id", 
-        element: <StudySession />,
-        errorElement: <GlobalErrorBoundary />
-      },
+      {
+        path: ":id",
+        element: <StudyFlashcard />
+      }
     ]
   }
 ])

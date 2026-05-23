@@ -15,8 +15,8 @@ const shuffleArray = (array) => {
   return newArray;
 };
 
-const StudySession = () => {
-  const { id } = useParams()
+const StudyFlashcard = () => {
+  const { id } = useParams();
 
   const sessionCards = cardsData.filter(card => card.deckId === id);
   const [shuffleCards, setShuffleCards] = useState(sessionCards);
@@ -29,14 +29,14 @@ const StudySession = () => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const handleUndo = () => {
-    setCurrentIndex(prev => prev - 1)
-    setIsFlipped(false)
-  }
+    setCurrentIndex(prev => prev - 1);
+    setIsFlipped(false);
+  };
 
   const handleNext = () => {
     if (currentIndex < totalCards - 1) {
       setCurrentIndex(prev => prev + 1);
-      setIsFlipped(false)
+      setIsFlipped(false);
     }
   };
 
@@ -49,48 +49,41 @@ const StudySession = () => {
         setShuffleCards(cardsPart1.concat(shufflePart2));
         setIndexBeforeShuffled(currentIndex);
         setIsShuffled(true);
-        setIsFlipped(false)
+        setIsFlipped(false);
     }
     else {
         setShuffleCards(sessionCards);
         setCurrentIndex(indexBeforeShuffled);
         setIsShuffled(false);
-        setIsFlipped(false)
+        setIsFlipped(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 flex flex-col text-slate-100 font-sans relative overflow-hidden z-0">
+    <div className="h-[calc(100vh-3.5rem)] w-full flex flex-col text-slate-100 font-sans relative overflow-hidden z-0">
       
       <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none -z-10" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-emerald-600/10 rounded-full blur-[120px] pointer-events-none -z-10" />
 
-      <header className="w-full flex items-center justify-center p-6 relative z-10">
-        <div className="flex flex-col items-center gap-2">
-          <div className="text-lg font-bold tracking-widest text-slate-100">
-            {currentIndex + 1} / {totalCards}
-          </div>
-          <h1 className="text-sm text-zinc-400 font-medium tracking-wide">
-            N2基礎ー語彙ーUnit 4 名詞B 271～320
-          </h1>
-        </div>
-      </header>
-
       <main className="flex-1 flex items-center justify-center w-full px-4 z-10">
-        <FlashcardItem cardData={currentCardData} key={currentCardData.id} isFlipped={isFlipped} setIsFlipped={setIsFlipped} />
+        <FlashcardItem 
+          cardData={currentCardData} 
+          key={currentCardData.id} 
+          isFlipped={isFlipped} 
+          setIsFlipped={setIsFlipped} 
+        />
       </main>
 
-      <footer className="w-full max-w-4xl mx-auto flex items-center justify-between p-8 z-10">
+      <footer className="w-full max-w-4xl mx-auto flex items-center justify-between p-6 md:p-8 z-10">
         
         <div className="flex-1 flex justify-start">
           <Button 
             variant="outline"
-            size="icon"
+            size="icon-xl"
             disabled={currentIndex === 0}
-            className="w-12 h-12 rounded-full border-white/20 bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white transition-all disabled:opacity-40"
             onClick={handleUndo}
           >
-            <FiRotateCcw className="w-5 h-5" />
+            <FiRotateCcw />
           </Button>
         </div>
 
@@ -98,8 +91,9 @@ const StudySession = () => {
           
           <Button 
             onClick={handleNext} 
-            variant="outline" className="flex flex-col items-center justify-center w-20 h-16 rounded-xl border-rose-500/40 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 hover:text-rose-300 transition-all hover:-translate-y-1"
+            variant="outline" 
             disabled={!isFlipped}
+            className="flex-col h-16 w-20 rounded-xl border-rose-500/40 bg-rose-500/10 text-rose-400 hover:bg-rose-500/20 hover:text-rose-300 hover:-translate-y-1"
           >
             <span className="text-sm font-bold">Lại</span>
             <span className="text-[10px] text-rose-400/80 font-medium tracking-wide">&lt; 1 phút</span>
@@ -107,8 +101,9 @@ const StudySession = () => {
 
           <Button 
             onClick={handleNext} 
-            variant="outline" className="flex flex-col items-center justify-center w-20 h-16 rounded-xl border-orange-500/40 bg-orange-500/10 hover:bg-orange-500/20 text-orange-400 hover:text-orange-300 transition-all hover:-translate-y-1"
+            variant="outline" 
             disabled={!isFlipped}
+            className="flex-col h-16 w-20 rounded-xl border-orange-500/40 bg-orange-500/10 text-orange-400 hover:bg-orange-500/20 hover:text-orange-300 hover:-translate-y-1"
           >
             <span className="text-sm font-bold">Khó</span>
             <span className="text-[10px] text-orange-400/80 font-medium tracking-wide">1 ngày</span>
@@ -116,8 +111,9 @@ const StudySession = () => {
 
           <Button 
             onClick={handleNext} 
-            variant="outline" className="flex flex-col items-center justify-center w-20 h-16 rounded-xl border-emerald-500/40 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 hover:text-emerald-300 transition-all hover:-translate-y-1"
+            variant="outline" 
             disabled={!isFlipped}
+            className="flex-col h-16 w-20 rounded-xl border-emerald-500/40 bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 hover:text-emerald-300 hover:-translate-y-1"
           >
             <span className="text-sm font-bold">Quen</span>
             <span className="text-[10px] text-emerald-400/80 font-medium tracking-wide">3 ngày</span>
@@ -125,8 +121,9 @@ const StudySession = () => {
 
           <Button 
             onClick={handleNext} 
-            variant="outline" className="flex flex-col items-center justify-center w-20 h-16 rounded-xl border-blue-500/40 bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 hover:text-blue-300 transition-all hover:-translate-y-1"
+            variant="outline" 
             disabled={!isFlipped}
+            className="flex-col h-16 w-20 rounded-xl border-blue-500/40 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 hover:text-blue-300 hover:-translate-y-1"
           >
             <span className="text-sm font-bold">Dễ</span>
             <span className="text-[10px] text-blue-400/80 font-medium tracking-wide">7 ngày</span>
@@ -138,14 +135,10 @@ const StudySession = () => {
           <Button 
             onClick={handleShuffle}
             variant="outline"
-            size="icon"
-            className={`w-12 h-12 rounded-full transition-all duration-200 ${
-            isShuffled 
-                ? "bg-white/30 border-white/40 text-white shadow-[0_0_15px_rgba(255,255,255,0.2)]" 
-                : "bg-white/10 border-white/20 text-slate-300 hover:bg-white/20 hover:text-white"
-            }`}
+            size="icon-xl"
+            className={isShuffled ? "bg-white/30 border-white/40 text-white shadow-[0_0_15px_rgba(255,255,255,0.2)]" : ""}
           >
-            <FiShuffle className="w-5 h-5" />
+            <FiShuffle />
           </Button>
         </div>
 
@@ -154,4 +147,4 @@ const StudySession = () => {
   );
 };
 
-export default StudySession;
+export default StudyFlashcard;

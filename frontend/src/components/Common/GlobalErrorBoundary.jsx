@@ -18,13 +18,9 @@ const GlobalErrorBoundary = () => {
         {errorMessage}
       </p>
       
-      <Button 
-        asChild 
-        variant="outline" 
-        className="border-white/10 bg-white/5 text-zinc-300 hover:bg-white/10 hover:text-white hover:border-white/20 rounded-full transition-all duration-200"
-      >
-        <Link to="/decks">Quay lại thư viện</Link>
-      </Button>
+      <Button asChild variant="outline" className="rounded-full">
+  <Link to="/decks">Quay lại thư viện</Link>
+</Button>
     </main>
   );
 };
