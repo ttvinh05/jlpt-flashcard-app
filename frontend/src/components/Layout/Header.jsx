@@ -57,12 +57,12 @@ const Header = ({ handleToggle }) => {
 
       <div className="flex items-center gap-4">
         <Button 
-          variant="ghost" 
-          className="w-12 h-12 text-zinc-400 hover:text-zinc-50 hover:bg-white/10 rounded-full flex items-center justify-center"
-          onClick={handleToggle}
-        >
-          <FiMenu className="!w-6 !h-6" />
-        </Button>
+  variant="ghost" 
+  size="icon-xl" 
+  onClick={handleToggle}
+>
+  <FiMenu />
+</Button>
         
         <Link to="/" className="hidden sm:block font-bold text-xl tracking-wider text-zinc-50 hover:opacity-80 transition-opacity">
           JLPT<span className="text-blue-500">Flash</span>
@@ -78,13 +78,13 @@ const Header = ({ handleToggle }) => {
             <FiSearch className="text-zinc-400 group-focus-within:text-blue-400 transition-colors" size={18} />
           </div>
           <Input
-            type="text"
-            placeholder="Tìm học phần..."
-            value={searchTerm}
-            className="w-full h-10 bg-white/5 border-white/10 text-zinc-50 placeholder-zinc-400 rounded-full py-2 pl-10 pr-4 focus-visible:ring-1 focus-visible:ring-blue-500/50 focus-visible:bg-white/10 transition-all"
-            onClick={handleClickInput}
-            onChange={handleChangeInput}
-          />
+  type="text"
+  placeholder="Tìm học phần..."
+  value={searchTerm}
+  className="rounded-full pl-10"
+  onClick={handleClickInput}
+  onChange={handleChangeInput}
+/>
 
           {isSearching && (
             <div className="absolute top-12 left-0 w-full bg-zinc-900/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-black overflow-hidden z-50 py-2">
@@ -124,94 +124,85 @@ const Header = ({ handleToggle }) => {
 
       <div className="flex items-center gap-3">
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button 
-              size="icon"
-              className="w-9 h-9 bg-blue-600/80 hover:bg-blue-500 text-zinc-50 rounded-full shadow-lg shadow-blue-900/20 outline-none"
-            >
-              <FiPlus size={20} />
-            </Button>
-          </DropdownMenuTrigger>
+  <DropdownMenuTrigger asChild>
+    <Button size="icon">
+  <FiPlus className="size-5" />
+</Button>
+  </DropdownMenuTrigger>
 
-          <DropdownMenuContent 
-            align="end" 
-            sideOffset={12}
-            className="w-48 bg-zinc-900/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl shadow-black p-1 z-50"
-          >
-            <DropdownMenuItem className="flex items-center gap-3 px-3 py-2.5 text-sm text-zinc-100 focus:bg-blue-600/20 focus:text-blue-400 cursor-pointer rounded-lg transition-colors group">
-              <span className="w-5 h-5 flex items-center justify-center bg-white/5 rounded group-hover:bg-blue-500/20">
-                📚
-              </span>
-              Học phần
-            </DropdownMenuItem>
-            
-            <DropdownMenuSeparator className="bg-white/10 my-1" />
-            
-            <DropdownMenuItem disabled className="flex items-center gap-3 px-3 py-2.5 text-sm text-zinc-600 cursor-not-allowed rounded-lg">
-              <span className="w-5 h-5 flex items-center justify-center bg-white/5 rounded opacity-50">
-                📁
-              </span>
-              Thư mục
-            </DropdownMenuItem>
-            
-            <DropdownMenuItem disabled className="flex items-center gap-3 px-3 py-2.5 text-sm text-zinc-600 cursor-not-allowed rounded-lg">
-              <span className="w-5 h-5 flex items-center justify-center bg-white/5 rounded opacity-50">
-                👥
-              </span>
-              Nhóm học
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+  <DropdownMenuContent align="end" sideOffset={12} className="w-48">
+    {/* Ta thêm class ghi đè màu hover riêng cho item Học phần này để giữ màu xanh (khác với màu trắng mặc định) */}
+    <DropdownMenuItem className="focus:bg-blue-600/20 focus:text-blue-400 group">
+      <span className="flex items-center justify-center bg-white/5 rounded w-5 h-5 group-hover:bg-blue-500/20">
+        📚
+      </span>
+      Học phần
+    </DropdownMenuItem>
+    
+    <DropdownMenuSeparator />
+    
+    {/* Nhờ file gốc, chỉ cần truyền 'disabled' là tự mờ và hiện con trỏ cấm */}
+    <DropdownMenuItem disabled>
+      <span className="flex items-center justify-center bg-white/5 rounded w-5 h-5 opacity-50">
+        📁
+      </span>
+      Thư mục
+    </DropdownMenuItem>
+    
+    <DropdownMenuItem disabled>
+      <span className="flex items-center justify-center bg-white/5 rounded w-5 h-5 opacity-50">
+        👥
+      </span>
+      Nhóm học
+    </DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>
 
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <button className="rounded-full outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
-              <Avatar className="w-9 h-9 border border-white/10 cursor-pointer hover:border-white/30 transition-all">
-                <AvatarFallback className="bg-emerald-600/80 hover:bg-emerald-500 text-zinc-50 font-bold transition-colors">
-                  V
-                </AvatarFallback>
-              </Avatar>
-            </button>
-          </DropdownMenuTrigger>
+  <DropdownMenuTrigger asChild>
+    <button className="rounded-full outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+      <Avatar>
+  <AvatarFallback>V</AvatarFallback>
+</Avatar>
+    </button>
+  </DropdownMenuTrigger>
 
-          <DropdownMenuContent 
-            align="end" 
-            sideOffset={12}
-            className="w-56 bg-zinc-900/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl shadow-black p-1 z-50"
-          >
-            <DropdownMenuLabel className="font-normal px-3 py-2.5">
-              <div className="flex flex-col space-y-1">
-                <p className="text-sm font-medium text-zinc-100 leading-none">Trần Thanh Vinh</p>
-                <p className="text-xs text-zinc-400 leading-none mt-1">23521799@gm.uit.edu.vn</p>
-              </div>
-            </DropdownMenuLabel>
-            
-            <DropdownMenuSeparator className="bg-white/10 my-1" />
-            
-            <DropdownMenuItem className="flex items-center gap-3 px-3 py-2.5 text-sm text-zinc-200 focus:bg-white/10 cursor-pointer rounded-lg transition-colors">
-              <FiUser className="text-zinc-400" size={16} />
-              Hồ sơ của bạn
-            </DropdownMenuItem>
+  <DropdownMenuContent align="end" sideOffset={12} className="w-56">
+    {/* Font, màu phụ và padding đã được file gốc lo, chỉ cần setup layout bên trong */}
+    <DropdownMenuLabel>
+      <div className="flex flex-col space-y-1">
+        <p className="text-sm font-medium text-zinc-100 leading-none">Trần Thanh Vinh</p>
+        <p className="text-xs leading-none mt-1">23521799@gm.uit.edu.vn</p>
+      </div>
+    </DropdownMenuLabel>
+    
+    <DropdownMenuSeparator />
+    
+    <DropdownMenuItem>
+      <FiUser />
+      Hồ sơ của bạn
+    </DropdownMenuItem>
 
-            <DropdownMenuItem className="flex items-center gap-3 px-3 py-2.5 text-sm text-zinc-200 focus:bg-white/10 cursor-pointer rounded-lg transition-colors">
-              <FiAward className="text-zinc-400" size={16} />
-              Thành tựu
-            </DropdownMenuItem>
-            
-            <DropdownMenuItem className="flex items-center gap-3 px-3 py-2.5 text-sm text-zinc-200 focus:bg-white/10 cursor-pointer rounded-lg transition-colors">
-              <FiSettings className="text-zinc-400" size={16} />
-              Cài đặt
-            </DropdownMenuItem>
-            
-            <DropdownMenuSeparator className="bg-white/10 my-1" />
-            
-            <DropdownMenuItem className="flex items-center gap-3 px-3 py-2.5 text-sm text-rose-400 focus:bg-rose-500/20 focus:text-rose-300 cursor-pointer rounded-lg transition-colors">
-              <FiLogOut size={16} />
-              Đăng xuất
-            </DropdownMenuItem>
+    <DropdownMenuItem>
+      <FiAward />
+      Thành tựu
+    </DropdownMenuItem>
+    
+    <DropdownMenuItem>
+      <FiSettings />
+      Cài đặt
+    </DropdownMenuItem>
+    
+    <DropdownMenuSeparator />
+    
+    {/* Mọi hiệu ứng chữ đỏ, nền đỏ hồng khi hover đều tự động ăn theo variant này */}
+    <DropdownMenuItem variant="destructive">
+      <FiLogOut />
+      Đăng xuất
+    </DropdownMenuItem>
 
-          </DropdownMenuContent>
-        </DropdownMenu>
+  </DropdownMenuContent>
+</DropdownMenu>
       </div>
       
     </header>

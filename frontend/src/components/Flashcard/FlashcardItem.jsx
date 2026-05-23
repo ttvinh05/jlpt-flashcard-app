@@ -9,7 +9,7 @@ const FlashcardItem = ({ cardData, isFlipped, setIsFlipped }) => {
   useEffect(() => {
     const handleKeyDown = (event) => {
         if(event.code === 'Space') {
-            event.preventDefault(); // Chặn cuộn trang
+            event.preventDefault(); 
             setIsFlipped(prev => !prev);
         }
     }
@@ -46,19 +46,21 @@ const FlashcardItem = ({ cardData, isFlipped, setIsFlipped }) => {
             onClick={handleClick}
         >
           {cardData.back.hiragana && (
-             <p className="text-4xl text-blue-400 font-semibold mb-6 tracking-widest drop-shadow-md text-center">
-               {cardData.back.hiragana}
-             </p>
+            <p className="text-4xl text-blue-400 font-semibold mb-6 tracking-widest drop-shadow-md text-center">
+              {cardData.back.hiragana}
+            </p>
           )}
 
           <div className="w-3/4 h-px bg-white/20 mb-6"></div>
 
-          <p className="text-2xl text-slate-100 text-center font-medium mb-4">
+          {/* Bổ sung whitespace-pre-line để xử lý xuống dòng ở phần Ý nghĩa */}
+          <p className="text-2xl text-slate-100 text-center font-medium mb-4 whitespace-pre-line">
             {cardData.back.meaning}
           </p>
           
           {cardData.back.example && (
-            <p className="text-lg text-zinc-400 italic text-center leading-relaxed px-4">
+            /* Bổ sung whitespace-pre-line để xử lý xuống dòng ở phần Ví dụ (nếu có) */
+            <p className="text-lg text-zinc-400 italic text-center leading-relaxed px-4 whitespace-pre-line">
               {cardData.back.example}
             </p>
           )}

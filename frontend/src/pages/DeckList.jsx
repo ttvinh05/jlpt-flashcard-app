@@ -88,17 +88,22 @@ const DeckList = () => {
                   <p className="text-zinc-400">Bạn đã hoàn thành 21/60 thẻ. Đang có chuỗi học rất tốt, tiếp tục nào!</p>
                 </div>
                 <div className="w-full max-w-md pt-2">
-                  <div className="flex justify-between items-center text-xs text-zinc-400 mb-2">
-                    <span>Tiến độ</span>
-                    <span className="text-blue-400 font-medium">35%</span>
-                  </div>
-                  <Progress value={35} className="h-2 bg-zinc-800" indicatorColor="bg-blue-500" />
-                </div>
+  <div className="flex justify-between items-center text-xs text-zinc-400 mb-2">
+    <span>Tiến độ</span>
+    <span className="text-blue-400 font-medium">35%</span>
+  </div>
+  
+  {/* Component Progress xịn xò lo hết nền đen và màu xanh */}
+  <Progress value={35} className="h-2" />
+</div>
               </div>
               
-              <Button className="bg-blue-600 hover:bg-blue-500 text-white rounded-2xl px-8 h-14 text-md font-bold shadow-lg shadow-blue-900/40 shrink-0">
-                Học tiếp ngay
-              </Button>
+              <Button 
+  size="lg" 
+  className="h-14 rounded-2xl font-bold shrink-0"
+>
+  Học tiếp ngay
+</Button>
             </div>
           </section>
 
@@ -109,32 +114,30 @@ const DeckList = () => {
               <div className="flex items-center gap-3 text-sm text-zinc-400 shrink-0">
                 <span>Sắp xếp:</span>
                 <DropdownMenu>
-                  <DropdownMenuTrigger className="flex items-center gap-1.5 bg-[#2d2d2d] border border-white/5 shadow-md text-zinc-50 px-4 py-1.5 rounded-full outline-none cursor-pointer font-medium transition-all group hover:bg-[#383838] data-[state=open]:bg-[#383838]">
-                {isDropdown}
-                <FiChevronDown 
-                  size={16} 
-                  className="text-zinc-400 group-hover:text-zinc-200 group-data-[state=open]:text-zinc-200 transition-transform duration-200 group-data-[state=open]:rotate-180" 
-                />
-                </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end" className="bg-[#1a1a1a]/95 backdrop-blur-xl border border-white/10 text-zinc-300 rounded-xl shadow-2xl min-w-[140px] p-1.5 mt-2">
-                      {FILTER_DROPDOWN.map((item) => (
-                        <DropdownMenuItem 
-                          key={item} 
-                          className={`cursor-pointer rounded-lg px-3 py-2 text-sm transition-colors outline-none font-medium flex items-center justify-between
-                            ${isDropdown === item 
-                              ? 'text-zinc-50' 
-                              : 'text-zinc-400 focus:text-zinc-50'
-                            }
-                            focus:bg-white/10 // Dù chọn hay chưa, cứ đưa chuột vào là có nền sáng
-                          `} 
-                          onClick={() => handleClickDropdown(item)}
-                        >
-                          {item}
-                          {isDropdown === item && <FiCheck size={16} className="text-blue-500" />}
-                        </DropdownMenuItem>
-                      ))}
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+  <DropdownMenuTrigger className="flex items-center gap-1.5 bg-[#2d2d2d] border border-white/5 shadow-md text-zinc-50 px-4 py-1.5 rounded-full outline-none cursor-pointer font-medium transition-all group hover:bg-[#383838] data-[state=open]:bg-[#383838]">
+    {isDropdown}
+    {/* Icon giữ lại size thủ công một chút vì nằm ở trigger chứ không phải trong MenuItem */}
+    <FiChevronDown 
+      size={16} 
+      className="text-zinc-400 group-hover:text-zinc-200 group-data-[state=open]:text-zinc-200 transition-transform duration-200 group-data-[state=open]:rotate-180" 
+    />
+  </DropdownMenuTrigger>
+  
+  <DropdownMenuContent align="end" className="min-w-[140px] mt-2">
+    {FILTER_DROPDOWN.map((item) => (
+      <DropdownMenuItem 
+        key={item} 
+        // Lợi dụng class có sẵn, chỉ thêm justify-between để đẩy dấu check sang phải
+        className={`justify-between ${isDropdown === item ? 'text-zinc-50' : ''}`} 
+        onClick={() => handleClickDropdown(item)}
+      >
+        {item}
+        {/* Icon check tự động có size 16px (size-4) từ file gốc, chỉ cần đè màu xanh */}
+        {isDropdown === item && <FiCheck className="!text-blue-500" />}
+      </DropdownMenuItem>
+    ))}
+  </DropdownMenuContent>
+</DropdownMenu>
                 </div>
               </div>
 

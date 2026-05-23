@@ -26,6 +26,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSeparator
 } from "@/components/ui/dropdown-menu";
 import { useNavigate, useParams } from "react-router";
 import { cardsData, decksData } from "@/utils/mockData";
@@ -57,57 +58,60 @@ const DeckDetails = () => {
           
           <div>
             <Button 
-              variant="ghost" 
-              onClick={() => navigate('/decks')}
-              className="text-zinc-400 hover:text-zinc-50 pl-0 gap-2 hover:bg-transparent -ml-2 transition-colors"
-            >
-              <FiArrowLeft size={18} />
-              Quay lại thư viện
-            </Button>
+  variant="ghost" 
+  onClick={() => navigate('/decks')}
+  className="pl-0 -ml-2 hover:bg-transparent [&_svg]:size-[18px]"
+>
+  <FiArrowLeft />
+  Quay lại thư viện
+</Button>
           </div>
 
           <section className="flex flex-col gap-6 pb-4">
             <div className="flex justify-between items-start">
               <div className="flex flex-wrap items-center gap-3 text-sm text-zinc-400">
-                <Badge variant="outline" className="text-blue-400 border-blue-500/30 bg-blue-500/10 px-3 py-1 text-sm font-semibold">
-                  {deckFiltered.level}
-                </Badge>
+                <Badge 
+  variant="outline" 
+  className="text-blue-400 border-blue-500/30 bg-blue-500/10 text-sm"
+>
+  {deckFiltered.level}
+</Badge>
                 <span className="flex items-center gap-1.5"><FiUser size={14}/>{deckFiltered.author}</span>
                 <span>•</span>
                 <span className="flex items-center gap-1.5"><FiClock size={14}/> Tạo lúc: {new Date(deckFiltered.createdAt).toLocaleDateString('vi-VN')}</span>
               </div>
               
               <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                <Button 
-                  variant="outline" 
-                  className="h-9 px-4 border-white/10 bg-white/5 text-zinc-300 hover:text-white hover:bg-white/10 data-[state=open]:bg-white/10 data-[state=open]:text-white rounded-full outline-none transition-all shadow-sm flex items-center gap-2 font-medium"
-                >
-                  <FiSettings size={16} />
-                  Tùy chọn
-                </Button>
-              </DropdownMenuTrigger>
-                
-                <DropdownMenuContent align="end" className="bg-[#1a1a1a]/95 backdrop-blur-xl border border-white/10 text-zinc-300 rounded-xl shadow-2xl min-w-[200px] p-1.5 mt-2">
-                  <DropdownMenuItem className="focus:bg-white/10 focus:text-white cursor-pointer rounded-lg px-3 py-2 text-sm transition-colors outline-none flex items-center gap-2 font-medium">
-                    <FiEdit2 size={14} className="text-zinc-400" /> Chỉnh sửa toàn bộ
-                  </DropdownMenuItem>
-                  
-                  <DropdownMenuItem className="focus:bg-white/10 focus:text-white cursor-pointer rounded-lg px-3 py-2 text-sm transition-colors outline-none flex items-center gap-2 font-medium">
-                    <FiRefreshCcw size={14} className="text-zinc-400" /> Đặt lại tiến độ
-                  </DropdownMenuItem>
+  <DropdownMenuTrigger asChild>
+    <Button variant="outline" className="rounded-full">
+  <FiSettings />
+  Tùy chọn
+</Button>
+  </DropdownMenuTrigger>
+  
+  {/* Đã bỏ các class nền, viền, shadow. Chỉ giữ lại width và margin top nếu cần thiết */}
+  <DropdownMenuContent align="end" className="w-48 mt-2">
+    <DropdownMenuItem>
+      <FiEdit2 /> Chỉnh sửa toàn bộ
+    </DropdownMenuItem>
+    
+    <DropdownMenuItem>
+      <FiRefreshCcw /> Đặt lại tiến độ
+    </DropdownMenuItem>
 
-                  <DropdownMenuItem className="focus:bg-white/10 focus:text-white cursor-pointer rounded-lg px-3 py-2 text-sm transition-colors outline-none flex items-center gap-2 font-medium">
-                    <FiShare2 size={14} className="text-zinc-400" /> Chia sẻ học phần
-                  </DropdownMenuItem>
-                  
-                  <div className="h-px bg-white/10 my-1 mx-1.5"></div>
-                  
-                  <DropdownMenuItem className="focus:bg-red-500/20 focus:text-red-400 text-red-500 cursor-pointer rounded-lg px-3 py-2 text-sm transition-colors outline-none flex items-center gap-2 font-medium">
-                    <FiTrash2 size={14} /> Xóa học phần
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+    <DropdownMenuItem>
+      <FiShare2 /> Chia sẻ học phần
+    </DropdownMenuItem>
+    
+    {/* Thay thế thẻ div thủ công bằng DropdownMenuSeparator chuẩn */}
+    <DropdownMenuSeparator />
+    
+    {/* Gọi thẳng variant="destructive" để ăn style đỏ/hồng đã setup */}
+    <DropdownMenuItem variant="destructive">
+      <FiTrash2 /> Xóa học phần
+    </DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>
 
             </div>
 
@@ -119,14 +123,19 @@ const DeckDetails = () => {
             </div>
 
             <div className="flex items-center gap-6 max-w-xl pt-2">
-              <div className="flex-1">
-                <div className="flex justify-between items-center text-sm font-medium mb-2">
-                  <span className="text-zinc-400">Tiến độ học phần</span>
-                  <span className="text-emerald-400">{progressPercent}% ({cardLearned}/{deckFiltered.totalCards} thẻ)</span>
-                </div>
-                <Progress value={progressPercent} className="h-2 bg-zinc-800" indicatorColor="bg-emerald-400" />
-              </div>
-            </div>
+  <div className="flex-1">
+    <div className="flex justify-between items-center text-sm font-medium mb-2">
+      <span className="text-zinc-400">Tiến độ học phần</span>
+      {/* Text phần trăm cũng sẽ tự động đổi từ Xanh dương sang Xanh ngọc khi đạt 100% */}
+      <span className={progressPercent === 100 ? "text-emerald-400" : "text-blue-400"}>
+        {progressPercent}% ({cardLearned}/{deckFiltered.totalCards} thẻ)
+      </span>
+    </div>
+    
+    {/* Component Progress xịn xò của chúng ta sẽ tự lo việc hiển thị màu Blue và đổi sang Emerald khi value = 100 */}
+    <Progress value={progressPercent} className="h-2" />
+  </div>
+</div>
           </section>
 
           <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -151,72 +160,74 @@ const DeckDetails = () => {
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2 text-zinc-100 leading-none">
               <span>Danh sách từ vựng</span>
               <Badge 
-                variant="outline" 
-                className="bg-white/10 text-zinc-300 border-white/10 px-2 py-0.5 text-[11px] font-medium rounded-full font-mono tracking-wider shadow-inner translate-y-[3px]"
-              >
-                {deckFiltered.totalCards} thẻ
-              </Badge>
+  variant="secondary" 
+  className="border border-white/10 px-2 py-0.5 text-[11px] font-medium rounded-full font-mono tracking-wider shadow-inner translate-y-[3px]"
+>
+  {deckFiltered.totalCards} thẻ
+</Badge>
             </h3>
             <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden shadow-lg shadow-black/20">
               <Table>
-                <TableHeader className="bg-black/40 hover:bg-black/40 border-b border-white/5">
-                  <TableRow className="border-none">
-                    <TableHead className="w-[80px] text-center text-zinc-400">STT</TableHead>
-                    <TableHead className="text-zinc-400 w-[150px]">Kanji</TableHead>
-                    <TableHead className="text-zinc-400 w-[150px]">Hiragana</TableHead>
-                    <TableHead className="text-zinc-400">Ý nghĩa & Ví dụ</TableHead>
-                    <TableHead className="text-center text-zinc-400 w-[140px]">Trạng thái</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {cardFiltered.map((word, index) => (
-                    <TableRow key={word.id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                      <TableCell className="text-center text-zinc-500 font-mono w-[80px]">{index + 1}</TableCell>
-                      <TableCell className="font-bold text-lg text-zinc-100">{word.front}</TableCell>
-                      <TableCell className="text-zinc-300">{word.back.hiragana}</TableCell>
-                      
-                      <TableCell>
-                        <div className="flex flex-col gap-1 py-2">
-                          <span className="text-zinc-200 font-medium whitespace-pre-line">
-                            {word.back.meaning}
-                          </span>
-                          
-                          {word.back.example && (
-                            <span className="block text-sm text-zinc-500 italic mt-1 bg-white/5 p-2 rounded-md border border-white/5 whitespace-pre-line break-words">
-                              {word.back.example}
-                            </span>
-                          )}
-                        </div>
-                      </TableCell>
+  <TableHeader>
+    <TableRow className="border-none hover:bg-transparent">
+      <TableHead className="w-[80px] text-center">STT</TableHead>
+      <TableHead className="w-[150px]">Kanji</TableHead>
+      <TableHead className="w-[150px]">Hiragana</TableHead>
+      <TableHead>Ý nghĩa & Ví dụ</TableHead>
+      <TableHead className="text-center w-[140px]">Trạng thái</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    {cardFiltered.map((word, index) => (
+      <TableRow key={word.id}>
+        <TableCell className="text-center text-zinc-500 font-mono w-[80px]">{index + 1}</TableCell>
+        <TableCell className="font-bold text-lg text-zinc-100">{word.front}</TableCell>
+        <TableCell className="text-zinc-300">{word.back.hiragana}</TableCell>
+        
+        {/* Phần nội dung dài vẫn giữ nguyên cấu trúc vì đây là layout chi tiết */}
+        <TableCell>
+          <div className="flex flex-col gap-1 py-2">
+            <span className="text-zinc-200 font-medium whitespace-pre-line">
+              {word.back.meaning}
+            </span>
+            
+            {word.back.example && (
+              <span className="block text-sm text-zinc-500 italic mt-1 bg-white/5 p-2 rounded-md border border-white/5 whitespace-pre-line break-words">
+                {word.back.example}
+              </span>
+            )}
+          </div>
+        </TableCell>
 
-                      <TableCell className="w-[140px]">
-                        <div className="flex justify-center w-full">
-                          <div className="flex items-center justify-start gap-2 w-[64px]">
-                            {word.status === 'learned' && (
-                              <>
-                                <div className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)] shrink-0"></div>
-                                <span className="text-xs font-medium text-emerald-400/70">Đã thuộc</span>
-                              </>
-                            )}
-                            {word.status === 'learning' && (
-                              <>
-                                <div className="w-2 h-2 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.8)] shrink-0"></div>
-                                <span className="text-xs font-medium text-amber-400/70">Đang học</span>
-                              </>
-                            )}
-                            {word.status === 'new' && (
-                              <>
-                                <div className="w-2 h-2 rounded-full bg-zinc-600 shrink-0"></div>
-                                <span className="text-xs font-medium text-zinc-500">Chưa học</span>
-                              </>
-                            )}
-                          </div>
-                        </div>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+        {/* Trạng thái từ vựng cũng giữ nguyên vì có logic điều kiện */}
+        <TableCell className="w-[140px]">
+          <div className="flex justify-center w-full">
+            <div className="flex items-center justify-start gap-2 w-[64px]">
+              {word.status === 'learned' && (
+                <>
+                  <div className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)] shrink-0"></div>
+                  <span className="text-xs font-medium text-emerald-400/70">Đã thuộc</span>
+                </>
+              )}
+              {word.status === 'learning' && (
+                <>
+                  <div className="w-2 h-2 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.8)] shrink-0"></div>
+                  <span className="text-xs font-medium text-amber-400/70">Đang học</span>
+                </>
+              )}
+              {word.status === 'new' && (
+                <>
+                  <div className="w-2 h-2 rounded-full bg-zinc-600 shrink-0"></div>
+                  <span className="text-xs font-medium text-zinc-500">Chưa học</span>
+                </>
+              )}
+            </div>
+          </div>
+        </TableCell>
+      </TableRow>
+    ))}
+  </TableBody>
+</Table>
             </div>
           </section>
 

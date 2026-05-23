@@ -10,9 +10,12 @@ const HeroBanner = () => {
           <p className="text-zinc-400 max-w-md">Bạn đã hoàn thành 70% bộ từ này. Chỉ còn 15 từ nữa là xong!</p>
         </div>
         <Link to="/study/deck_n2_791-840">
-          <Button className="w-fit bg-blue-600 hover:bg-blue-500 text-white rounded-xl px-8 h-12 text-md font-semibold shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-all active:scale-95 hover:-translate-y-1">
-            Học ngay
-          </Button>
+          <Button 
+  size="lg" 
+  className="w-fit h-12 font-semibold shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:-translate-y-1 active:scale-95"
+>
+  Học ngay
+</Button>
         </Link>
       </div>
       <div className="absolute -right-10 -bottom-10 w-64 h-64 bg-blue-600/20 blur-[100px] rounded-full group-hover:bg-blue-600/30 transition-all duration-500"></div>
