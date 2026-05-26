@@ -1,6 +1,6 @@
 import { FiX, FiSettings, FiChevronDown, FiBookOpen, FiAward, FiGrid, FiZap, FiLayers } from 'react-icons/fi';
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress"; // ĐÃ THÊM IMPORT PROGRESS
+import { Progress } from "@/components/ui/progress"; 
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,12 +8,23 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useDecks } from '@/hooks/useDecks';
+import { useNavigate, useParams } from 'react-router';
 
-export default function StudyHeader() {
+export default function StudyHeader({ progress }) {
+
+  const { decks } = useDecks()
+  const { id } = useParams()
+  const navigate = useNavigate()
+
+  const deckFiltered = decks.find(item => item.id === id)
+  const currentCard = progress?.current ?? 1
+  const totalCard = progress?.total ?? deckFiltered?.totalCards
+  const percent = (currentCard / totalCard) * 100
+
   return (
     <header className="sticky top-0 z-50 flex h-16 w-full items-center justify-between pl-4 pr-4 md:pr-6 bg-zinc-950/80 backdrop-blur-md border-b border-white/10 shadow-xl shadow-black/50 font-sans">
       
-      {/* TRÁI: Dropdown chế độ */}
       <div className="flex items-center z-10">
         <DropdownMenu>
           
@@ -64,21 +75,18 @@ export default function StudyHeader() {
         </DropdownMenu>
       </div>
 
-      {/* GIỮA: Dùng tọa độ Absolute để ép căn tâm màn hình 100% chuẩn xác */}
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center text-center w-full max-w-[35%] sm:max-w-[45%] md:max-w-[50%]">
         <span className="text-xs font-bold text-zinc-200 tracking-wider">
-          1 / 50
+          {`${currentCard} / ${totalCard}`}
         </span>
         <span className="text-xs text-zinc-400 font-medium truncate w-full mt-0.5 mb-1.5 max-w-[180px] sm:max-w-[300px] md:max-w-[450px]">
-          N2基礎ー語彙ーUnit 4 名詞B 271~320
+          {deckFiltered.title}
         </span>
         
-        {/* ĐÃ THAY THẾ BẰNG COMPONENT PROGRESS CHUẨN - Ép chiều rộng w-28 để giống y xì design cũ */}
-        <Progress value={2} className="w-28 h-1 bg-white/5 border border-white/5" />
+        <Progress value={percent} className="w-28 h-1 bg-white/5 border border-white/5" />
         
       </div>
 
-      {/* PHẢI: Các nút chức năng */}
       <div className="flex items-center gap-2 md:gap-3 z-10">
         <Button 
           variant="outline"
@@ -95,6 +103,7 @@ export default function StudyHeader() {
           variant="ghost"
           size="icon-lg"
           className="hover:text-rose-400 hover:bg-rose-500/10"
+          onClick={() => navigate(`/deck/${id}`)}
         >
           <FiX className="size-6" />
         </Button>

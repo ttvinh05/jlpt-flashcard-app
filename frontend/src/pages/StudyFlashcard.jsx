@@ -1,8 +1,8 @@
 import { FiShuffle, FiRotateCcw } from "react-icons/fi";
 import FlashcardItem from "../components/Flashcard/FlashcardItem";
 import { cardsData } from "../utils/mockData";
-import { useState } from "react";
-import { useParams } from "react-router";
+import { useEffect, useState } from "react";
+import { useOutletContext, useParams } from "react-router";
 
 import { Button } from "@/components/ui/button"; 
 
@@ -18,46 +18,53 @@ const shuffleArray = (array) => {
 const StudyFlashcard = () => {
   const { id } = useParams();
 
+  const { setProgress } = useOutletContext();
+  
   const sessionCards = cardsData.filter(card => card.deckId === id);
   const [shuffleCards, setShuffleCards] = useState(sessionCards);
   const [currentIndex, setCurrentIndex] = useState(0);
   const totalCards = shuffleCards.length; 
   const currentCardData = shuffleCards[currentIndex];
-
+  
   const [isShuffled, setIsShuffled] = useState(false);
   const [indexBeforeShuffled, setIndexBeforeShuffled] = useState(currentIndex);
   const [isFlipped, setIsFlipped] = useState(false);
-
+  
+  
   const handleUndo = () => {
     setCurrentIndex(prev => prev - 1);
     setIsFlipped(false);
   };
-
+  
   const handleNext = () => {
     if (currentIndex < totalCards - 1) {
       setCurrentIndex(prev => prev + 1);
       setIsFlipped(false);
     }
   };
-
+  
   const handleShuffle = () => {
     if(isShuffled === false) {
-        const cardsPart1 = shuffleCards.slice(0, currentIndex);
-        const cardsPart2 = shuffleCards.slice(currentIndex);
-
-        const shufflePart2 = shuffleArray(cardsPart2);
-        setShuffleCards(cardsPart1.concat(shufflePart2));
-        setIndexBeforeShuffled(currentIndex);
-        setIsShuffled(true);
-        setIsFlipped(false);
+      const cardsPart1 = shuffleCards.slice(0, currentIndex);
+      const cardsPart2 = shuffleCards.slice(currentIndex);
+      
+      const shufflePart2 = shuffleArray(cardsPart2);
+      setShuffleCards(cardsPart1.concat(shufflePart2));
+      setIndexBeforeShuffled(currentIndex);
+      setIsShuffled(true);
+      setIsFlipped(false);
     }
     else {
-        setShuffleCards(sessionCards);
-        setCurrentIndex(indexBeforeShuffled);
-        setIsShuffled(false);
-        setIsFlipped(false);
+      setShuffleCards(sessionCards);
+      setCurrentIndex(indexBeforeShuffled);
+      setIsShuffled(false);
+      setIsFlipped(false);
     }
   };
+  
+  useEffect(() => {
+    setProgress({current: currentIndex + 1, total: totalCards})
+  }, [currentIndex, totalCards, setProgress])
 
   return (
     <div className="h-[calc(100vh-3.5rem)] w-full flex flex-col text-slate-100 font-sans relative overflow-hidden z-0">
