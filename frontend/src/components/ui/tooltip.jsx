@@ -1,23 +1,25 @@
-import { Tooltip as TooltipPrimitive } from "radix-ui"
+import { Tooltip as TooltipPrimitive } from "radix-ui";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 function TooltipProvider({
   delayDuration = 300, // ĐÃ ĐẶT 300ms LÀM MẶC ĐỊNH CHO TOÀN BỘ APP
   ...props
 }) {
-  return (<TooltipPrimitive.Provider data-slot="tooltip-provider" delayDuration={delayDuration} {...props} />);
+  return (
+    <TooltipPrimitive.Provider
+      data-slot="tooltip-provider"
+      delayDuration={delayDuration}
+      {...props}
+    />
+  );
 }
 
-function Tooltip({
-  ...props
-}) {
+function Tooltip({ ...props }) {
   return <TooltipPrimitive.Root data-slot="tooltip" {...props} />;
 }
 
-function TooltipTrigger({
-  ...props
-}) {
+function TooltipTrigger({ ...props }) {
   return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />;
 }
 
@@ -40,16 +42,18 @@ function TooltipContent({
           "data-[state=delayed-open]:animate-in data-[state=delayed-open]:fade-in-0 data-[state=delayed-open]:zoom-in-95",
           "data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
           "**:data-[slot=kbd]:relative **:data-[slot=kbd]:isolate **:data-[slot=kbd]:z-50 **:data-[slot=kbd]:rounded-sm",
-          className
+          className,
         )}
-        {...props}>
+        {...props}
+      >
         {children}
         <TooltipPrimitive.Arrow
           // Đồng bộ màu mũi tên với nền Tooltip
-          className="z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[1px] bg-[#1a1a1a] border-b border-r border-white/10 fill-[#1a1a1a]" />
+          className="z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[1px] bg-[#1a1a1a] border-b border-r border-white/10 fill-[#1a1a1a]"
+        />
       </TooltipPrimitive.Content>
     </TooltipPrimitive.Portal>
   );
 }
 
-export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger }
+export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger };

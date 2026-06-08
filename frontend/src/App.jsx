@@ -1,31 +1,31 @@
-import { createBrowserRouter, RouterProvider } from "react-router"
-import HomePage from "@/pages/Homepage"
-import DeckDetails from "@/pages/DeckDetails"
-import StudyFlashcard from "@/pages/StudyFlashcard"
-import DeckList from "@/pages/DeckList"
-import MainLayout from "@/components/Layout/MainLayout"
-import GlobalErrorBoundary from "@/components/Common/GlobalErrorBoundary"
-import StudyLayout from "@/components/Layout/StudyLayout"
+import { createBrowserRouter, RouterProvider } from "react-router";
+import HomePage from "@/pages/Homepage";
+import DeckDetails from "@/pages/DeckDetails";
+import StudyFlashcard from "@/pages/StudyFlashcard";
+import DeckList from "@/pages/DeckList";
+import MainLayout from "@/components/Layout/MainLayout";
+import GlobalErrorBoundary from "@/components/Common/GlobalErrorBoundary";
+import StudyLayout from "@/components/Layout/StudyLayout";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout />, 
+    element: <MainLayout />,
     errorElement: <GlobalErrorBoundary />,
     children: [
       {
-        index: true, 
-        element: <HomePage />
-      }, 
+        index: true,
+        element: <HomePage />,
+      },
       {
         path: "decks",
-        element: <DeckList />
+        element: <DeckList />,
       },
-      { 
-        path: "deck/:id", 
-        element: <DeckDetails />
+      {
+        path: "deck/:id",
+        element: <DeckDetails />,
       },
-    ]
+    ],
   },
   {
     path: "/study",
@@ -34,14 +34,14 @@ const router = createBrowserRouter([
     children: [
       {
         path: ":id",
-        element: <StudyFlashcard />
-      }
-    ]
-  }
-])
+        element: <StudyFlashcard />,
+      },
+    ],
+  },
+]);
 
 function App() {
-  return <RouterProvider router={router} />
+  return <RouterProvider router={router} />;
 }
 
-export default App
+export default App;
