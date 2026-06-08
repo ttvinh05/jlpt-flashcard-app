@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabase';
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase";
 
 export const useDecks = () => {
   const [decks, setDecks] = useState([]);
@@ -11,25 +11,37 @@ export const useDecks = () => {
       try {
         setLoading(true);
 
-        const { data: dbDecks, error: decksError } = await supabase.from('decks').select('*');
-        const { data: dbCards, error: cardsError } = await supabase.from('cards').select('*');
+        const { data: dbDecks, error: decksError } = await supabase
+          .from("decks")
+          .select("*");
+        const { data: dbCards, error: cardsError } = await supabase
+          .from("cards")
+          .select("*");
 
         if (decksError) throw decksError;
         if (cardsError) throw cardsError;
 
-        const decksWithProgress = dbDecks.map(deck => {
-          const deckCards = dbCards.filter(card => card.deck_id === deck.id);
-          
-          const learnedCount = deckCards.filter(card => card.status === "learned").length;
+        const decksWithProgress = dbDecks.map((deck) => {
+          const deckCards = dbCards.filter((card) => card.deck_id === deck.id);
 
-          const progress = deckCards.length > 0 
-            ? Math.round((learnedCount / deckCards.length) * 100) 
-            : 0;
+          const learnedCount = deckCards.filter(
+            (card) => card.status === "learned",
+          ).length;
+
+          const progress =
+            deckCards.length > 0
+              ? Math.round((learnedCount / deckCards.length) * 100)
+              : 0;
 
           return {
-            ...deck,
+            id: deck.id,
+            title: deck.title,
+            description: deck.description,
+            level: deck.level,
             progress: progress,
-            totalCards: deckCards.length 
+            totalCards: deck.total_cards,
+            createdAt: deck.created_at,
+            author: "User",
           };
         });
 
