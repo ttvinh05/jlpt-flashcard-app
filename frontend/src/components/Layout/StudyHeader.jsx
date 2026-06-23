@@ -17,27 +17,23 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useDecks } from "@/hooks/useDecks";
 import { useNavigate, useParams } from "react-router";
 import StudyHeaderSkeleton from "@/components/Layout/StudyHeaderSkeleton";
 
-export default function StudyHeader({ progress }) {
-  const { decks, loading, error } = useDecks();
+export default function StudyHeader({ progress, deckDetail, loading, error }) {
   const { id } = useParams();
   const navigate = useNavigate();
 
   if (loading) return <StudyHeaderSkeleton />;
   if (error) throw new Response(error, { status: 400 });
 
-  const deckFiltered = decks.find((item) => item.id === id);
-
-  if (!decks)
+  if (!deckDetail)
     throw new Response("Học phần này không tồn tại hoặc đã bị xóa!", {
       status: 404,
     });
 
   const currentCard = progress?.current ?? 1;
-  const totalCard = progress?.total ?? deckFiltered.totalCards;
+  const totalCard = progress?.total ?? deckDetail.totalCards;
   const percent = (currentCard / totalCard) * 100;
 
   return (
@@ -95,7 +91,7 @@ export default function StudyHeader({ progress }) {
           {`${currentCard} / ${totalCard}`}
         </span>
         <span className="text-xs text-zinc-400 font-medium truncate w-full mt-0.5 mb-1.5 max-w-[180px] sm:max-w-[300px] md:max-w-[450px]">
-          {deckFiltered.title}
+          {deckDetail.title}
         </span>
 
         <Progress

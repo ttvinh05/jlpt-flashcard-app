@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router";
 
 import { Button } from "@/components/ui/button";
-import { useDeckDetails } from "@/hooks/useDeckDetails";
 import StudyFlashcardSkeleton from "@/components/Flashcard/StudyFlashcardSkeleton";
 
 const shuffleArray = (array) => {
@@ -17,8 +16,7 @@ const shuffleArray = (array) => {
 };
 
 const StudyFlashcard = () => {
-  const { deckDetail, loading, error } = useDeckDetails();
-  const { setProgress } = useOutletContext();
+  const { deckDetail, loading, error, setProgress } = useOutletContext();
 
   const [shuffleCards, setShuffleCards] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
