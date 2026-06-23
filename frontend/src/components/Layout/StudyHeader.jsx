@@ -19,15 +19,25 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useDecks } from "@/hooks/useDecks";
 import { useNavigate, useParams } from "react-router";
+import StudyHeaderSkeleton from "@/components/Layout/StudyHeaderSkeleton";
 
 export default function StudyHeader({ progress }) {
-  const { decks } = useDecks();
+  const { decks, loading, error } = useDecks();
   const { id } = useParams();
   const navigate = useNavigate();
 
+  if (loading) return <StudyHeaderSkeleton />;
+  if (error) throw new Response(error, { status: 400 });
+
   const deckFiltered = decks.find((item) => item.id === id);
+
+  if (!decks)
+    throw new Response("Học phần này không tồn tại hoặc đã bị xóa!", {
+      status: 404,
+    });
+
   const currentCard = progress?.current ?? 1;
-  const totalCard = progress?.total ?? deckFiltered?.totalCards;
+  const totalCard = progress?.total ?? deckFiltered.totalCards;
   const percent = (currentCard / totalCard) * 100;
 
   return (

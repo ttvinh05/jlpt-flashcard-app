@@ -1,10 +1,11 @@
 import { FiShuffle, FiRotateCcw } from "react-icons/fi";
 import FlashcardItem from "../components/Flashcard/FlashcardItem";
-import { cardsData } from "../utils/mockData";
 import { useEffect, useState } from "react";
-import { useOutletContext, useParams } from "react-router";
+import { useOutletContext } from "react-router";
 
 import { Button } from "@/components/ui/button";
+import { useDeckDetails } from "@/hooks/useDeckDetails";
+import StudyFlashcardSkeleton from "@/components/Flashcard/StudyFlashcardSkeleton";
 
 const shuffleArray = (array) => {
   const newArray = [...array];
@@ -16,19 +17,30 @@ const shuffleArray = (array) => {
 };
 
 const StudyFlashcard = () => {
-  const { id } = useParams();
-
+  const { deckDetail, loading, error } = useDeckDetails();
   const { setProgress } = useOutletContext();
 
-  const sessionCards = cardsData.filter((card) => card.deckId === id);
-  const [shuffleCards, setShuffleCards] = useState(sessionCards);
+  const [shuffleCards, setShuffleCards] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const totalCards = shuffleCards.length;
-  const currentCardData = shuffleCards[currentIndex];
-
-  const [isShuffled, setIsShuffled] = useState(false);
-  const [indexBeforeShuffled, setIndexBeforeShuffled] = useState(currentIndex);
+  const [indexBeforeShuffled, setIndexBeforeShuffled] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
+
+  const sessionCards = deckDetail?.cards || [];
+  const isShuffled = shuffleCards !== null;
+  const currentCards = isShuffled ? shuffleCards : sessionCards;
+  const totalCards = currentCards.length;
+  const currentCardData = currentCards[currentIndex];
+
+  useEffect(() => {
+    if (deckDetail) {
+      setProgress({ current: currentIndex + 1, total: totalCards });
+    }
+  }, [currentIndex, totalCards, setProgress, deckDetail]);
+
+  if (loading) return <StudyFlashcardSkeleton />;
+  if (error) throw new Response(error, { status: 400 });
+  if (!deckDetail)
+    throw new Response("Không tìm thấy dữ liệu phiên học!", { status: 404 });
 
   const handleUndo = () => {
     setCurrentIndex((prev) => prev - 1);
@@ -44,25 +56,19 @@ const StudyFlashcard = () => {
 
   const handleShuffle = () => {
     if (isShuffled === false) {
-      const cardsPart1 = shuffleCards.slice(0, currentIndex);
-      const cardsPart2 = shuffleCards.slice(currentIndex);
+      const cardsPart1 = sessionCards.slice(0, currentIndex);
+      const cardsPart2 = sessionCards.slice(currentIndex);
 
       const shufflePart2 = shuffleArray(cardsPart2);
+
       setShuffleCards(cardsPart1.concat(shufflePart2));
       setIndexBeforeShuffled(currentIndex);
-      setIsShuffled(true);
-      setIsFlipped(false);
     } else {
-      setShuffleCards(sessionCards);
+      setShuffleCards(null);
       setCurrentIndex(indexBeforeShuffled);
-      setIsShuffled(false);
-      setIsFlipped(false);
     }
+    setIsFlipped(false);
   };
-
-  useEffect(() => {
-    setProgress({ current: currentIndex + 1, total: totalCards });
-  }, [currentIndex, totalCards, setProgress]);
 
   return (
     <div className="h-[calc(100vh-3.5rem)] w-full flex flex-col text-slate-100 font-sans relative overflow-hidden z-0">
