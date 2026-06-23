@@ -19,7 +19,7 @@ const GlobalErrorBoundary = () => {
       </p>
 
       <Button asChild variant="outline" className="rounded-full">
-        <Link to="/decks">Quay lại thư viện</Link>
+        <Link to="/">Quay về trang chủ</Link>
       </Button>
     </main>
   );
