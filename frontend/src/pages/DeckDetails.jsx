@@ -29,31 +29,31 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { useNavigate, useParams } from "react-router";
-import { cardsData } from "@/utils/mockData";
 import ActionCard from "@/components/Deck/ActionCard";
-import { useDecks } from "@/hooks/useDecks";
+import { useDeckDetails } from "@/hooks/useDeckDetails";
+import DeckDetailsSkeleton from "@/components/Deck/DeckDetailsSkeleton";
 
 const DeckDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const { decks } = useDecks();
+  const { deckDetail, loading, error } = useDeckDetails();
 
-  const deckFiltered = decks.find((item) => item.id === id);
+  if (loading) return <DeckDetailsSkeleton />;
 
-  if (!deckFiltered) {
+  if (error) {
+    throw new Response(error, { status: 400 });
+  }
+
+  if (!deckDetail) {
     throw new Response("Học phần này không tồn tại hoặc đã bị xóa!", {
       status: 404,
     });
   }
 
-  const cardFiltered = cardsData.filter((item) => item.deckId === id);
+  const cardFiltered = deckDetail.cards;
   const cardLearned = cardFiltered.filter(
     (card) => card.status === "learned",
   ).length;
-  const progressPercent =
-    deckFiltered.totalCards > 0
-      ? Math.round((cardLearned / deckFiltered.totalCards) * 100)
-      : 0;
 
   return (
     <main className="flex-1 flex flex-col h-screen overflow-hidden text-zinc-50 font-sans bg-zinc-950 relative">
@@ -79,16 +79,16 @@ const DeckDetails = () => {
                   variant="outline"
                   className="text-blue-400 border-blue-500/30 bg-blue-500/10 text-sm"
                 >
-                  {deckFiltered.level}
+                  {deckDetail.level}
                 </Badge>
                 <span className="flex items-center gap-1.5">
                   <FiUser size={14} />
-                  {deckFiltered.author}
+                  {deckDetail.author}
                 </span>
                 <span>•</span>
                 <span className="flex items-center gap-1.5">
                   <FiClock size={14} /> Tạo lúc:{" "}
-                  {new Date(deckFiltered.createdAt).toLocaleDateString("vi-VN")}
+                  {new Date(deckDetail.createdAt).toLocaleDateString("vi-VN")}
                 </span>
               </div>
 
@@ -100,7 +100,6 @@ const DeckDetails = () => {
                   </Button>
                 </DropdownMenuTrigger>
 
-                {/* Đã bỏ các class nền, viền, shadow. Chỉ giữ lại width và margin top nếu cần thiết */}
                 <DropdownMenuContent align="end" className="w-48 mt-2">
                   <DropdownMenuItem>
                     <FiEdit2 /> Chỉnh sửa toàn bộ
@@ -114,10 +113,8 @@ const DeckDetails = () => {
                     <FiShare2 /> Chia sẻ học phần
                   </DropdownMenuItem>
 
-                  {/* Thay thế thẻ div thủ công bằng DropdownMenuSeparator chuẩn */}
                   <DropdownMenuSeparator />
 
-                  {/* Gọi thẳng variant="destructive" để ăn style đỏ/hồng đã setup */}
                   <DropdownMenuItem variant="destructive">
                     <FiTrash2 /> Xóa học phần
                   </DropdownMenuItem>
@@ -127,10 +124,10 @@ const DeckDetails = () => {
 
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
-                {deckFiltered.title}
+                {deckDetail.title}
               </h1>
               <p className="text-zinc-400 text-lg max-w-3xl leading-relaxed">
-                {deckFiltered.description}
+                {deckDetail.description}
               </p>
             </div>
 
@@ -138,21 +135,19 @@ const DeckDetails = () => {
               <div className="flex-1">
                 <div className="flex justify-between items-center text-sm font-medium mb-2">
                   <span className="text-zinc-400">Tiến độ học phần</span>
-                  {/* Text phần trăm cũng sẽ tự động đổi từ Xanh dương sang Xanh ngọc khi đạt 100% */}
                   <span
                     className={
-                      progressPercent === 100
+                      deckDetail.progress === 100
                         ? "text-emerald-400"
                         : "text-blue-400"
                     }
                   >
-                    {progressPercent}% ({cardLearned}/{deckFiltered.totalCards}{" "}
-                    thẻ)
+                    {deckDetail.progress}% ({cardLearned}/
+                    {deckDetail.cards.length} thẻ)
                   </span>
                 </div>
 
-                {/* Component Progress xịn xò của chúng ta sẽ tự lo việc hiển thị màu Blue và đổi sang Emerald khi value = 100 */}
-                <Progress value={progressPercent} className="h-2" />
+                <Progress value={deckDetail.progress} className="h-2" />
               </div>
             </div>
           </section>
@@ -182,7 +177,7 @@ const DeckDetails = () => {
                 variant="secondary"
                 className="border border-white/10 px-2 py-0.5 text-[11px] font-medium rounded-full font-mono tracking-wider shadow-inner translate-y-[3px]"
               >
-                {deckFiltered.totalCards} thẻ
+                {deckDetail.cards.length} thẻ
               </Badge>
             </h3>
             <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden shadow-lg shadow-black/20">
@@ -208,25 +203,23 @@ const DeckDetails = () => {
                         {word.front}
                       </TableCell>
                       <TableCell className="text-zinc-300">
-                        {word.back.hiragana}
+                        {word.backHiragana}
                       </TableCell>
 
-                      {/* Phần nội dung dài vẫn giữ nguyên cấu trúc vì đây là layout chi tiết */}
                       <TableCell>
                         <div className="flex flex-col gap-1 py-2">
                           <span className="text-zinc-200 font-medium whitespace-pre-line">
-                            {word.back.meaning}
+                            {word.backMeaning}
                           </span>
 
-                          {word.back.example && (
+                          {word.backExample && (
                             <span className="block text-sm text-zinc-500 italic mt-1 bg-white/5 p-2 rounded-md border border-white/5 whitespace-pre-line break-words">
-                              {word.back.example}
+                              {word.backExample}
                             </span>
                           )}
                         </div>
                       </TableCell>
 
-                      {/* Trạng thái từ vựng cũng giữ nguyên vì có logic điều kiện */}
                       <TableCell className="w-[140px]">
                         <div className="flex justify-center w-full">
                           <div className="flex items-center justify-start gap-2 w-[64px]">
