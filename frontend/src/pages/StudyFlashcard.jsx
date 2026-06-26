@@ -35,9 +35,8 @@ const StudyFlashcard = () => {
     }
   }, [currentIndex, totalCards, setProgress, deckDetail]);
 
-  if (loading) return <StudyFlashcardSkeleton />;
   if (error) throw new Response(error, { status: 400 });
-  if (!deckDetail)
+  if (!loading && !deckDetail)
     throw new Response("Không tìm thấy dữ liệu phiên học!", { status: 404 });
 
   const handleUndo = () => {
@@ -73,92 +72,98 @@ const StudyFlashcard = () => {
       <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none -z-10" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-emerald-600/10 rounded-full blur-[120px] pointer-events-none -z-10" />
 
-      <main className="flex-1 flex items-center justify-center w-full px-4 z-10">
-        <FlashcardItem
-          cardData={currentCardData}
-          key={currentCardData.id}
-          isFlipped={isFlipped}
-          setIsFlipped={setIsFlipped}
-        />
-      </main>
+      {loading ? (
+        <StudyFlashcardSkeleton />
+      ) : (
+        <>
+          <main className="flex-1 flex items-center justify-center w-full px-4 z-10">
+            <FlashcardItem
+              cardData={currentCardData}
+              key={currentCardData.id}
+              isFlipped={isFlipped}
+              setIsFlipped={setIsFlipped}
+            />
+          </main>
 
-      <footer className="w-full max-w-4xl mx-auto flex items-center justify-between p-6 md:p-8 z-10">
-        <div className="flex-1 flex justify-start">
-          <Button
-            variant="outline"
-            size="icon-xl"
-            disabled={currentIndex === 0}
-            onClick={handleUndo}
-          >
-            <FiRotateCcw />
-          </Button>
-        </div>
+          <footer className="w-full max-w-4xl mx-auto flex items-center justify-between p-6 md:p-8 z-10">
+            <div className="flex-1 flex justify-start">
+              <Button
+                variant="outline"
+                size="icon-xl"
+                disabled={currentIndex === 0}
+                onClick={handleUndo}
+              >
+                <FiRotateCcw />
+              </Button>
+            </div>
 
-        <div className="flex items-center justify-center gap-3">
-          <Button
-            onClick={handleNext}
-            variant="outline"
-            disabled={!isFlipped}
-            className="flex-col h-16 w-20 rounded-xl border-rose-500/40 bg-rose-500/10 text-rose-400 hover:bg-rose-500/20 hover:text-rose-300 hover:-translate-y-1"
-          >
-            <span className="text-sm font-bold">Lại</span>
-            <span className="text-[10px] text-rose-400/80 font-medium tracking-wide">
-              &lt; 1 phút
-            </span>
-          </Button>
+            <div className="flex items-center justify-center gap-3">
+              <Button
+                onClick={handleNext}
+                variant="outline"
+                disabled={!isFlipped}
+                className="flex-col h-16 w-20 rounded-xl border-rose-500/40 bg-rose-500/10 text-rose-400 hover:bg-rose-500/20 hover:text-rose-300 hover:-translate-y-1"
+              >
+                <span className="text-sm font-bold">Lại</span>
+                <span className="text-[10px] text-rose-400/80 font-medium tracking-wide">
+                  &lt; 1 phút
+                </span>
+              </Button>
 
-          <Button
-            onClick={handleNext}
-            variant="outline"
-            disabled={!isFlipped}
-            className="flex-col h-16 w-20 rounded-xl border-orange-500/40 bg-orange-500/10 text-orange-400 hover:bg-orange-500/20 hover:text-orange-300 hover:-translate-y-1"
-          >
-            <span className="text-sm font-bold">Khó</span>
-            <span className="text-[10px] text-orange-400/80 font-medium tracking-wide">
-              1 ngày
-            </span>
-          </Button>
+              <Button
+                onClick={handleNext}
+                variant="outline"
+                disabled={!isFlipped}
+                className="flex-col h-16 w-20 rounded-xl border-orange-500/40 bg-orange-500/10 text-orange-400 hover:bg-orange-500/20 hover:text-orange-300 hover:-translate-y-1"
+              >
+                <span className="text-sm font-bold">Khó</span>
+                <span className="text-[10px] text-orange-400/80 font-medium tracking-wide">
+                  1 ngày
+                </span>
+              </Button>
 
-          <Button
-            onClick={handleNext}
-            variant="outline"
-            disabled={!isFlipped}
-            className="flex-col h-16 w-20 rounded-xl border-emerald-500/40 bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 hover:text-emerald-300 hover:-translate-y-1"
-          >
-            <span className="text-sm font-bold">Quen</span>
-            <span className="text-[10px] text-emerald-400/80 font-medium tracking-wide">
-              3 ngày
-            </span>
-          </Button>
+              <Button
+                onClick={handleNext}
+                variant="outline"
+                disabled={!isFlipped}
+                className="flex-col h-16 w-20 rounded-xl border-emerald-500/40 bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 hover:text-emerald-300 hover:-translate-y-1"
+              >
+                <span className="text-sm font-bold">Quen</span>
+                <span className="text-[10px] text-emerald-400/80 font-medium tracking-wide">
+                  3 ngày
+                </span>
+              </Button>
 
-          <Button
-            onClick={handleNext}
-            variant="outline"
-            disabled={!isFlipped}
-            className="flex-col h-16 w-20 rounded-xl border-blue-500/40 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 hover:text-blue-300 hover:-translate-y-1"
-          >
-            <span className="text-sm font-bold">Dễ</span>
-            <span className="text-[10px] text-blue-400/80 font-medium tracking-wide">
-              7 ngày
-            </span>
-          </Button>
-        </div>
+              <Button
+                onClick={handleNext}
+                variant="outline"
+                disabled={!isFlipped}
+                className="flex-col h-16 w-20 rounded-xl border-blue-500/40 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 hover:text-blue-300 hover:-translate-y-1"
+              >
+                <span className="text-sm font-bold">Dễ</span>
+                <span className="text-[10px] text-blue-400/80 font-medium tracking-wide">
+                  7 ngày
+                </span>
+              </Button>
+            </div>
 
-        <div className="flex-1 flex justify-end">
-          <Button
-            onClick={handleShuffle}
-            variant="outline"
-            size="icon-xl"
-            className={
-              isShuffled
-                ? "bg-white/30 border-white/40 text-white shadow-[0_0_15px_rgba(255,255,255,0.2)]"
-                : ""
-            }
-          >
-            <FiShuffle />
-          </Button>
-        </div>
-      </footer>
+            <div className="flex-1 flex justify-end">
+              <Button
+                onClick={handleShuffle}
+                variant="outline"
+                size="icon-xl"
+                className={
+                  isShuffled
+                    ? "bg-white/30 border-white/40 text-white shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+                    : ""
+                }
+              >
+                <FiShuffle />
+              </Button>
+            </div>
+          </footer>
+        </>
+      )}
     </div>
   );
 };
