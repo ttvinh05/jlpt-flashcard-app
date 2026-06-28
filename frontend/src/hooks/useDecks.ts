@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
+import type { Deck } from "@/types/deck";
 
 export const useDecks = () => {
-  const [decks, setDecks] = useState([]);
+  const [decks, setDecks] = useState<Deck[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,8 +22,10 @@ export const useDecks = () => {
         if (decksError) throw decksError;
         if (cardsError) throw cardsError;
 
-        const decksWithProgress = dbDecks.map((deck) => {
-          const deckCards = dbCards.filter((card) => card.deck_id === deck.id);
+        const decksWithProgress = (dbDecks ?? []).map((deck) => {
+          const deckCards = (dbCards ?? []).filter(
+            (card) => card.deck_id === deck.id,
+          );
 
           const learnedCount = deckCards.filter(
             (card) => card.status === "learned",
@@ -47,7 +50,11 @@ export const useDecks = () => {
 
         setDecks(decksWithProgress);
       } catch (err) {
-        setError(err.message);
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError("Đã xảy ra lỗi không xác định");
+        }
       } finally {
         setLoading(false);
       }
