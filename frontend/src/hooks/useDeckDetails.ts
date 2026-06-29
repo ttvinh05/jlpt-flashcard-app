@@ -1,11 +1,12 @@
 import { supabase } from "@/lib/supabase";
+import type { DeckDetail } from "@/types/deck";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
 export const useDeckDetails = () => {
-  const [deckDetail, setDeckDetail] = useState(null);
+  const [deckDetail, setDeckDetail] = useState<DeckDetail>();
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   const { id } = useParams();
 
@@ -68,7 +69,11 @@ export const useDeckDetails = () => {
 
         setDeckDetail(finalDetail);
       } catch (err) {
-        setError(err.message);
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError("Đã xảy ra lỗi không xác định");
+        }
       } finally {
         setLoading(false);
       }
