@@ -1,4 +1,8 @@
-const WeeklyProgress = ({ percentage = 70 }) => {
+interface WeeklyProgressProps {
+  percentage?: number
+}
+
+const WeeklyProgress = ({ percentage = 70 }: WeeklyProgressProps) => {
   const radius = 40;
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (percentage / 100) * circumference;

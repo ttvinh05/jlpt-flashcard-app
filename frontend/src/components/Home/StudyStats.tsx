@@ -1,7 +1,15 @@
 import { FiZap, FiTarget } from "react-icons/fi";
 import { FaFire } from "react-icons/fa";
 
-const StatCard = ({ icon: Icon, color, title, value, subtitle }) => (
+interface StatCardProps {
+  icon: React.ComponentType<{ size?: number }>;
+  color: string;
+  title: string;
+  value: string;
+  subtitle: string;
+}
+
+const StatCard = ({ icon: Icon, color, title, value, subtitle }: StatCardProps) => (
   <div className="bg-white/5 border border-white/10 rounded-3xl p-6 flex flex-col justify-between hover:bg-white/10 transition-all group">
     <div className={`flex justify-between items-center ${color}`}>
       <Icon size={24} />

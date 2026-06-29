@@ -38,7 +38,6 @@ const StudySidebar = () => {
             })}
           </div>
 
-          {/* Legend */}
           <div className="flex items-center justify-between mt-2 text-[10px] text-zinc-500 font-medium">
             <span>Ít</span>
             <div className="flex gap-2">

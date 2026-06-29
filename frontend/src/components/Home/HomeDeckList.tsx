@@ -1,7 +1,12 @@
 import { Button } from "@/components/ui/button";
 import DeckCard from "@/components/Deck/DeckCard";
+import type { Deck } from "@/types/deck";
 
-const HomeDeckList = ({ decks }) => {
+interface HomeDeckListProps {
+  decks: Deck[]
+}
+
+const HomeDeckList = ({ decks }: HomeDeckListProps) => {
   return (
     <div className="col-span-3">
       <div className="flex justify-between items-center mb-4">
