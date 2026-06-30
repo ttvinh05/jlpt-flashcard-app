@@ -1,7 +1,7 @@
 export interface Deck {
   id: string;
   title: string;
-  level: string;
+  level: "N1" | "N2" | "N3" | "N4" | "N5" | "Khác";
   description: string | null;
   totalCards: number;
   author: string;

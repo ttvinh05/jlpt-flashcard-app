@@ -23,8 +23,13 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import type { Deck } from "@/types/deck";
 
-const DeckCard = ({ deck }) => {
+interface DeckCardProps {
+  deck: Deck
+}
+
+const DeckCard = ({ deck }: DeckCardProps) => {
   const navigate = useNavigate();
 
   return (
@@ -42,17 +47,14 @@ const DeckCard = ({ deck }) => {
           {deck.level || "Khác"}
         </Badge>
 
-        {/* Ngăn chặn sự kiện click lan ra ngoài làm chuyển trang */}
         <div onClick={(e) => e.stopPropagation()}>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              {/* Cực gọn: Chỉ cần ghost và ép size-8 (32px) bo tròn */}
               <Button variant="ghost" className="size-8 rounded-full p-0">
                 <FiMoreHorizontal />
               </Button>
             </DropdownMenuTrigger>
 
-            {/* Đã xóa mọi class kính mờ rườm rà, chỉ giữ lại w-40 (160px) */}
             <DropdownMenuContent align="end" className="w-40">
               <DropdownMenuItem>
                 <FiEdit2 /> Đổi tên nhanh
@@ -62,7 +64,6 @@ const DeckCard = ({ deck }) => {
                 <FiRefreshCcw /> Đặt lại tiến độ
               </DropdownMenuItem>
 
-              {/* Dùng Separator chuẩn hệ thống */}
               <DropdownMenuSeparator />
 
               <DropdownMenuItem variant="destructive">
@@ -91,7 +92,7 @@ const DeckCard = ({ deck }) => {
         <div className="flex items-center gap-4 text-xs text-zinc-500 font-medium">
           <span className="flex items-center gap-1.5">
             <FiBookOpen className="size-3.5" />{" "}
-            {deck.cardsCount || deck.totalCards} thẻ
+            {deck.totalCards} thẻ
           </span>
           <span>•</span>
           <span>{deck.author}</span>

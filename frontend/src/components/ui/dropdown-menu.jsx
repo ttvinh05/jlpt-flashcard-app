@@ -50,7 +50,12 @@ function DropdownMenuGroup({ ...props }) {
   );
 }
 
-function DropdownMenuItem({ className, inset, variant = "default", ...props }) {
+function DropdownMenuItem({
+  className = "",
+  inset = false,
+  variant = "default",
+  ...props
+}) {
   return (
     <DropdownMenuPrimitive.Item
       data-slot="dropdown-menu-item"
@@ -144,7 +149,7 @@ function DropdownMenuLabel({ className, inset, ...props }) {
   );
 }
 
-function DropdownMenuSeparator({ className, ...props }) {
+function DropdownMenuSeparator({ className = "", ...props }) {
   return (
     <DropdownMenuPrimitive.Separator
       data-slot="dropdown-menu-separator"

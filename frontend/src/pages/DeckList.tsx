@@ -28,7 +28,7 @@ const DeckList = () => {
   const [isTabActive, setIsTabActive] = useState("Tất cả");
   const [isDropdown, setIsDropDown] = useState("Mới nhất");
 
-  const handleClickTab = (lvl) => {
+  const handleClickTab = (lvl: string) => {
     setIsTabActive(lvl);
   };
 
@@ -36,15 +36,15 @@ const DeckList = () => {
     (item) => isTabActive === "Tất cả" || item.level === isTabActive,
   );
 
-  const handleClickDropdown = (item) => {
+  const handleClickDropdown = (item: string) => {
     setIsDropDown(item);
   };
 
   const sortedData = [...deckDataFiltered].sort((a, b) => {
     if (isDropdown === "Mới nhất")
-      return new Date(b.createdAt) - new Date(a.createdAt);
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
     if (isDropdown === "Cũ nhất")
-      return new Date(a.createdAt) - new Date(b.createdAt);
+      return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
     if (isDropdown === "Tiến độ (%)") return b.progress - a.progress;
 
     return 0;
