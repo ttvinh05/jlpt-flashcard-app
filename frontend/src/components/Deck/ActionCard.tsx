@@ -1,11 +1,18 @@
-// Component con nhận toàn bộ sự khác biệt qua Props
+interface ActionCardProps {
+  title: string;
+  description: string;
+  icon: React.ComponentType<{ size?: number, className?: string }>;
+  onClick: () => void;
+  variant: "blue" | "purple";
+}
+
 const ActionCard = ({
   title,
   description,
   icon: Icon,
   onClick,
   variant = "blue",
-}) => {
+}: ActionCardProps) => {
   const styles = {
     blue: {
       glow: "bg-blue-600/10 group-hover:bg-blue-600/20",

@@ -32,6 +32,7 @@ import { useNavigate, useParams } from "react-router";
 import ActionCard from "@/components/Deck/ActionCard";
 import { useDeckDetails } from "@/hooks/useDeckDetails";
 import DeckDetailsSkeleton from "@/components/Deck/DeckDetailsSkeleton";
+import type { DeckDetail } from "@/types/deck";
 
 const DeckDetails = () => {
   const navigate = useNavigate();
@@ -52,6 +53,8 @@ const DeckDetails = () => {
   const cardLearned = cardFiltered.filter(
     (card) => card.status === "learned",
   ).length;
+
+  const safeDeckDetail = deckDetail as DeckDetail;
 
   return (
     <main className="flex-1 flex flex-col h-screen overflow-hidden text-zinc-50 font-sans bg-zinc-950 relative">
@@ -81,16 +84,16 @@ const DeckDetails = () => {
                       variant="outline"
                       className="text-blue-400 border-blue-500/30 bg-blue-500/10 text-sm"
                     >
-                      {deckDetail.level}
+                      {safeDeckDetail.level}
                     </Badge>
                     <span className="flex items-center gap-1.5">
                       <FiUser size={14} />
-                      {deckDetail.author}
+                      {safeDeckDetail.author}
                     </span>
                     <span>•</span>
                     <span className="flex items-center gap-1.5">
                       <FiClock size={14} /> Tạo lúc:{" "}
-                      {new Date(deckDetail.createdAt).toLocaleDateString(
+                      {new Date(safeDeckDetail.createdAt).toLocaleDateString(
                         "vi-VN",
                       )}
                     </span>
@@ -128,10 +131,10 @@ const DeckDetails = () => {
 
                 <div className="space-y-4">
                   <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
-                    {deckDetail.title}
+                    {safeDeckDetail.title}
                   </h1>
                   <p className="text-zinc-400 text-lg max-w-3xl leading-relaxed">
-                    {deckDetail.description}
+                    {safeDeckDetail.description}
                   </p>
                 </div>
 
@@ -141,17 +144,17 @@ const DeckDetails = () => {
                       <span className="text-zinc-400">Tiến độ học phần</span>
                       <span
                         className={
-                          deckDetail.progress === 100
+                          safeDeckDetail.progress === 100
                             ? "text-emerald-400"
                             : "text-blue-400"
                         }
                       >
-                        {deckDetail.progress}% ({cardLearned}/
-                        {deckDetail.cards.length} thẻ)
+                        {safeDeckDetail.progress}% ({cardLearned}/
+                        {safeDeckDetail.cards.length} thẻ)
                       </span>
                     </div>
 
-                    <Progress value={deckDetail.progress} className="h-2" />
+                    <Progress value={safeDeckDetail.progress} className="h-2" />
                   </div>
                 </div>
               </section>
@@ -181,7 +184,7 @@ const DeckDetails = () => {
                     variant="secondary"
                     className="border border-white/10 px-2 py-0.5 text-[11px] font-medium rounded-full font-mono tracking-wider shadow-inner translate-y-[3px]"
                   >
-                    {deckDetail.cards.length} thẻ
+                    {safeDeckDetail.cards.length} thẻ
                   </Badge>
                 </h3>
                 <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden shadow-lg shadow-black/20">
