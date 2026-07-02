@@ -5,8 +5,16 @@ import { useOutletContext } from "react-router";
 
 import { Button } from "@/components/ui/button";
 import StudyFlashcardSkeleton from "@/components/Flashcard/StudyFlashcardSkeleton";
+import type { StudyContextType } from "@/components/Layout/StudyLayout";
+import type { CardDetail } from "@/types/deck";
 
-const shuffleArray = (array) => {
+export interface FlashcardItemProps {
+  cardData: CardDetail;
+  isFlipped: boolean;
+  setIsFlipped: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const shuffleArray = (array: CardDetail[]) => {
   const newArray = [...array];
   for (let i = newArray.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -16,9 +24,9 @@ const shuffleArray = (array) => {
 };
 
 const StudyFlashcard = () => {
-  const { deckDetail, loading, error, setProgress } = useOutletContext();
+  const { deckDetail, loading, error, setProgress } = useOutletContext<StudyContextType>();
 
-  const [shuffleCards, setShuffleCards] = useState(null);
+  const [shuffleCards, setShuffleCards] = useState<CardDetail[] | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [indexBeforeShuffled, setIndexBeforeShuffled] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);

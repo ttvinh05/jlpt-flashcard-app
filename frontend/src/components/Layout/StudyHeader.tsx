@@ -19,8 +19,17 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useNavigate, useParams } from "react-router";
 import StudyHeaderSkeleton from "@/components/Layout/StudyHeaderSkeleton";
+import type { DeckDetail } from "@/types/deck";
+import type { ProgressState } from "@/components/Layout/StudyLayout";
 
-export default function StudyHeader({ progress, deckDetail, loading, error }) {
+interface StudyHeaderProps {
+  progress: ProgressState;
+  deckDetail: DeckDetail | undefined;
+  loading: boolean;
+  error: string | null;
+}
+
+export default function StudyHeader({ progress, deckDetail, loading, error }: StudyHeaderProps) {
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -98,7 +107,7 @@ export default function StudyHeader({ progress, deckDetail, loading, error }) {
               {`${currentCard} / ${totalCard}`}
             </span>
             <span className="text-xs text-zinc-400 font-medium truncate w-full mt-0.5 mb-1.5 max-w-[180px] sm:max-w-[300px] md:max-w-[450px]">
-              {deckDetail.title}
+              {deckDetail?.title}
             </span>
 
             <Progress

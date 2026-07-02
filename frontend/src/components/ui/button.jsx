@@ -8,27 +8,21 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        // Nút Primary (Giống nút "+" trên Header)
         default:
           "bg-blue-600/80 text-zinc-50 shadow-lg shadow-blue-900/20 hover:bg-blue-500",
 
-        // Nút Kính mờ chủ đạo (Chuẩn rules thiết kế)
         outline:
           "border-white/10 bg-white/5 text-zinc-300 backdrop-blur-md shadow-sm hover:text-white hover:bg-white/20 data-[state=open]:bg-white/10 data-[state=open]:text-white",
 
-        // Nút phụ nền xám tối
         secondary:
           "bg-white/5 text-zinc-300 hover:bg-white/10 hover:text-zinc-50",
 
-        // Nút tàng hình (chỉ hiện khi hover)
         ghost:
           "text-zinc-400 hover:bg-white/10 hover:text-zinc-50 data-[state=open]:bg-white/10 data-[state=open]:text-zinc-50",
 
-        // Nút cảnh báo/Xóa
         destructive:
           "bg-rose-500/10 text-rose-500 hover:bg-rose-500/20 hover:text-rose-400 focus-visible:border-rose-500/40 focus-visible:ring-rose-500/20",
 
-        // Nút dạng text link
         link: "text-blue-400 underline-offset-4 hover:underline",
       },
       size: {
@@ -40,7 +34,6 @@ const buttonVariants = cva(
         "icon-xs": "size-6 rounded-md [&_svg:not([class*='size-'])]:size-3",
         "icon-sm": "size-8 rounded-md",
         "icon-lg": "size-10 rounded-full",
-        // Size Custom cho Menu Toggle
         "icon-xl": "size-12 rounded-full [&_svg:not([class*='size-'])]:size-6",
       },
     },
@@ -52,7 +45,7 @@ const buttonVariants = cva(
 );
 
 function Button({
-  className,
+  className = "",
   variant = "default",
   size = "default",
   asChild = false,
