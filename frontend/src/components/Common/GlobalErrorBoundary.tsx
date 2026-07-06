@@ -1,4 +1,4 @@
-import { useRouteError, Link } from "react-router";
+import { useRouteError, Link, isRouteErrorResponse } from "react-router";
 import { Button } from "@/components/ui/button";
 
 const GlobalErrorBoundary = () => {
@@ -6,8 +6,13 @@ const GlobalErrorBoundary = () => {
 
   let errorMessage = "Đã có lỗi hệ thống xảy ra. Vui lòng thử lại sau!";
 
-  if (error?.status === 404) {
-    errorMessage = error.data || "Trang bạn tìm kiếm không tồn tại!";
+  if (isRouteErrorResponse(error)) {
+    if (error?.status === 404) {
+      errorMessage =
+        typeof error.data === "string"
+          ? error.data
+          : "Trang bạn tìm kiếm không tồn tại!";
+    }
   }
 
   return (
