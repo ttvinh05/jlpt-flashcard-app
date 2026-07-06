@@ -1,7 +1,11 @@
 import { NavLink } from "react-router";
 import { FiHome, FiBook, FiBarChart2 } from "react-icons/fi";
 
-const Sidebar = ({ isOpen }) => {
+interface SidebarProps {
+  isOpen: boolean;
+}
+
+const Sidebar = ({ isOpen }: SidebarProps) => {
   return (
     <aside
       className={`border-r border-white/10 bg-white/5 backdrop-blur-xl flex flex-col py-6 h-full transition-all duration-300 ease-in-out ${isOpen ? "w-64" : "w-20"}`}

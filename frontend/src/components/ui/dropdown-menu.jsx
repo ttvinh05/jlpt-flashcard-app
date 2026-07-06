@@ -138,7 +138,7 @@ function DropdownMenuRadioItem({ className, children, inset, ...props }) {
   );
 }
 
-function DropdownMenuLabel({ className, inset, ...props }) {
+function DropdownMenuLabel({ className = "", inset = undefined, ...props }) {
   return (
     <DropdownMenuPrimitive.Label
       data-slot="dropdown-menu-label"
