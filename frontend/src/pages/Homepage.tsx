@@ -9,7 +9,7 @@ import HomePageSkeleton from "@/components/Home/HomePageSkeleton";
 const HomePage = () => {
   const { decks, loading, error } = useDecks();
 
-  if (error) throw new Response("Lỗi tải trang chủ", { status: 400 });
+  if (error) throw new Response("Lỗi kết nối máy chủ", { status: 500 });
 
   return (
     <div className="flex min-h-screen bg-zinc-950 text-zinc-50 font-sans">

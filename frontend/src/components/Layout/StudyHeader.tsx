@@ -33,17 +33,9 @@ export default function StudyHeader({
   progress,
   deckDetail,
   loading,
-  error,
 }: StudyHeaderProps) {
   const { id } = useParams();
   const navigate = useNavigate();
-
-  if (error) throw new Response(error, { status: 400 });
-
-  if (!loading && !deckDetail)
-    throw new Response("Học phần này không tồn tại hoặc đã bị xóa!", {
-      status: 404,
-    });
 
   const currentCard = progress?.current ?? 1;
   const totalCard = progress?.total ?? deckDetail?.totalCards ?? 1;

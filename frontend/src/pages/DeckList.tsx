@@ -20,10 +20,11 @@ const DeckList = () => {
   const navigate = useNavigate();
   const { decks, loading, error } = useDecks();
 
-  if (error)
-    throw new Response("Không tải được trang danh sách học phần", {
-      status: 400,
+  if (error) {
+    throw new Response("Không thể tải danh sách học phần từ hệ thống", {
+      status: 500,
     });
+  }
 
   const [isTabActive, setIsTabActive] = useState("Tất cả");
   const [isDropdown, setIsDropDown] = useState("Mới nhất");

@@ -24,7 +24,7 @@ const shuffleArray = (array: CardDetail[]) => {
 };
 
 const StudyFlashcard = () => {
-  const { deckDetail, loading, error, setProgress } =
+  const { deckDetail, loading, setProgress } =
     useOutletContext<StudyContextType>();
 
   const [shuffleCards, setShuffleCards] = useState<CardDetail[] | null>(null);
@@ -43,10 +43,6 @@ const StudyFlashcard = () => {
       setProgress({ current: currentIndex + 1, total: totalCards });
     }
   }, [currentIndex, totalCards, setProgress, deckDetail]);
-
-  if (error) throw new Response(error, { status: 400 });
-  if (!loading && !deckDetail)
-    throw new Response("Không tìm thấy dữ liệu phiên học!", { status: 404 });
 
   const handleUndo = () => {
     setCurrentIndex((prev) => prev - 1);

@@ -40,7 +40,7 @@ const DeckDetails = () => {
   const { deckDetail, loading, error } = useDeckDetails();
 
   if (error) {
-    throw new Response(error, { status: 400 });
+    throw new Response("Lỗi kết nối cơ sở dữ liệu", { status: 500 });
   }
 
   if (!loading && !deckDetail) {

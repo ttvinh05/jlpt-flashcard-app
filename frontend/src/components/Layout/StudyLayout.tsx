@@ -20,6 +20,15 @@ const StudyLayout = () => {
   const [progress, setProgress] = useState<ProgressState>({});
   const { deckDetail, loading, error } = useDeckDetails();
 
+  if (error) {
+    throw new Response("Lỗi kết nối cơ sở dữ liệu", { status: 500 });
+  }
+
+  if (!loading && !deckDetail)
+    throw new Response("Học phần này không tồn tại hoặc đã bị xóa!", {
+      status: 404,
+    });
+
   return (
     <div className="min-h-screen bg-zinc-950 text-slate-100">
       <StudyHeader
