@@ -3,7 +3,7 @@ import DeckCard from "@/components/Deck/DeckCard";
 import type { Deck } from "@/types/deck";
 
 interface HomeDeckListProps {
-  decks: Deck[]
+  decks: Deck[];
 }
 
 const HomeDeckList = ({ decks }: HomeDeckListProps) => {

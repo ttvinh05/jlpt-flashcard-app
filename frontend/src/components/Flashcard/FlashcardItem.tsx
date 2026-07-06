@@ -1,13 +1,17 @@
 import type { FlashcardItemProps } from "@/pages/StudyFlashcard";
 import { useEffect } from "react";
 
-const FlashcardItem = ({ cardData, isFlipped, setIsFlipped }: FlashcardItemProps) => {
+const FlashcardItem = ({
+  cardData,
+  isFlipped,
+  setIsFlipped,
+}: FlashcardItemProps) => {
   const handleClick = () => {
     setIsFlipped((prev) => !prev);
   };
 
   useEffect(() => {
-    const handleKeyDown = (event : KeyboardEvent) => {
+    const handleKeyDown = (event: KeyboardEvent) => {
       if (event.code === "Space") {
         event.preventDefault();
         setIsFlipped((prev) => !prev);

@@ -5,7 +5,7 @@ const HeaderSkeleton = () => {
     <>
       <div className="flex items-center gap-4">
         <Skeleton className="h-10 w-10 rounded-xl bg-white/5" />
-        
+
         <Skeleton className="hidden sm:block h-6 w-24 rounded-md bg-white/5" />
       </div>
 

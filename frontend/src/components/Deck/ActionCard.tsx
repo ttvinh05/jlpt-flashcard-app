@@ -1,7 +1,7 @@
 interface ActionCardProps {
   title: string;
   description: string;
-  icon: React.ComponentType<{ size?: number, className?: string }>;
+  icon: React.ComponentType<{ size?: number; className?: string }>;
   onClick: () => void;
   variant: "blue" | "purple";
 }

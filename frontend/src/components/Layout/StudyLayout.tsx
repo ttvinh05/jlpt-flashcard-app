@@ -13,7 +13,7 @@ export interface StudyContextType {
   deckDetail: DeckDetail | undefined;
   loading: boolean;
   error: string | null;
-  setProgress: React.Dispatch<React.SetStateAction<ProgressState>>
+  setProgress: React.Dispatch<React.SetStateAction<ProgressState>>;
 }
 
 const StudyLayout = () => {

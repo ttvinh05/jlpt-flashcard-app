@@ -26,7 +26,7 @@ import {
 import type { Deck } from "@/types/deck";
 
 interface DeckCardProps {
-  deck: Deck
+  deck: Deck;
 }
 
 const DeckCard = ({ deck }: DeckCardProps) => {
@@ -91,8 +91,7 @@ const DeckCard = ({ deck }: DeckCardProps) => {
 
         <div className="flex items-center gap-4 text-xs text-zinc-500 font-medium">
           <span className="flex items-center gap-1.5">
-            <FiBookOpen className="size-3.5" />{" "}
-            {deck.totalCards} thẻ
+            <FiBookOpen className="size-3.5" /> {deck.totalCards} thẻ
           </span>
           <span>•</span>
           <span>{deck.author}</span>

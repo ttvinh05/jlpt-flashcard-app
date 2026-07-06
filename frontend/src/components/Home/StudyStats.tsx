@@ -9,7 +9,13 @@ interface StatCardProps {
   subtitle: string;
 }
 
-const StatCard = ({ icon: Icon, color, title, value, subtitle }: StatCardProps) => (
+const StatCard = ({
+  icon: Icon,
+  color,
+  title,
+  value,
+  subtitle,
+}: StatCardProps) => (
   <div className="bg-white/5 border border-white/10 rounded-3xl p-6 flex flex-col justify-between hover:bg-white/10 transition-all group">
     <div className={`flex justify-between items-center ${color}`}>
       <Icon size={24} />

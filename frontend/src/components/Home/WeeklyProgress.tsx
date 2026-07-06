@@ -1,5 +1,5 @@
 interface WeeklyProgressProps {
-  percentage?: number
+  percentage?: number;
 }
 
 const WeeklyProgress = ({ percentage = 70 }: WeeklyProgressProps) => {

@@ -11,7 +11,7 @@ import type { CardDetail } from "@/types/deck";
 export interface FlashcardItemProps {
   cardData: CardDetail;
   isFlipped: boolean;
-  setIsFlipped: React.Dispatch<React.SetStateAction<boolean>>
+  setIsFlipped: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const shuffleArray = (array: CardDetail[]) => {
@@ -24,7 +24,8 @@ const shuffleArray = (array: CardDetail[]) => {
 };
 
 const StudyFlashcard = () => {
-  const { deckDetail, loading, error, setProgress } = useOutletContext<StudyContextType>();
+  const { deckDetail, loading, error, setProgress } =
+    useOutletContext<StudyContextType>();
 
   const [shuffleCards, setShuffleCards] = useState<CardDetail[] | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);

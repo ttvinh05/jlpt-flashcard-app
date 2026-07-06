@@ -29,7 +29,12 @@ interface StudyHeaderProps {
   error: string | null;
 }
 
-export default function StudyHeader({ progress, deckDetail, loading, error }: StudyHeaderProps) {
+export default function StudyHeader({
+  progress,
+  deckDetail,
+  loading,
+  error,
+}: StudyHeaderProps) {
   const { id } = useParams();
   const navigate = useNavigate();
 
