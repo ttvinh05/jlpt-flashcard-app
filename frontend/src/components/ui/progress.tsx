@@ -2,12 +2,18 @@ import * as ProgressPrimitive from "@radix-ui/react-progress";
 
 import { cn } from "@/lib/utils";
 
+interface ProgressProps extends React.ComponentPropsWithoutRef<
+  typeof ProgressPrimitive.Root
+> {
+  indicatorColor?: string;
+}
+
 function Progress({
   className = "",
   value = 0,
   indicatorColor = undefined,
   ...props
-}) {
+}: ProgressProps) {
   const autoColor =
     value === 100
       ? "bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.5)]"

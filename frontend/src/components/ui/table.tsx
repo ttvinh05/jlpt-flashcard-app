@@ -1,6 +1,9 @@
 import { cn } from "@/lib/utils";
 
-function Table({ className = "", ...props }) {
+function Table({
+  className = "",
+  ...props
+}: React.ComponentPropsWithoutRef<"table">) {
   return (
     <div
       data-slot="table-container"
@@ -15,7 +18,10 @@ function Table({ className = "", ...props }) {
   );
 }
 
-function TableHeader({ className = "", ...props }) {
+function TableHeader({
+  className = "",
+  ...props
+}: React.ComponentPropsWithoutRef<"thead">) {
   return (
     <thead
       data-slot="table-header"
@@ -25,7 +31,10 @@ function TableHeader({ className = "", ...props }) {
   );
 }
 
-function TableBody({ className = "", ...props }) {
+function TableBody({
+  className = "",
+  ...props
+}: React.ComponentPropsWithoutRef<"tbody">) {
   return (
     <tbody
       data-slot="table-body"
@@ -35,7 +44,10 @@ function TableBody({ className = "", ...props }) {
   );
 }
 
-function TableFooter({ className, ...props }) {
+function TableFooter({
+  className = "",
+  ...props
+}: React.ComponentPropsWithoutRef<"tfoot">) {
   return (
     <tfoot
       data-slot="table-footer"
@@ -48,7 +60,10 @@ function TableFooter({ className, ...props }) {
   );
 }
 
-function TableRow({ className = "", ...props }) {
+function TableRow({
+  className = "",
+  ...props
+}: React.ComponentPropsWithoutRef<"tr">) {
   return (
     <tr
       data-slot="table-row"
@@ -61,7 +76,10 @@ function TableRow({ className = "", ...props }) {
   );
 }
 
-function TableHead({ className = "", ...props }) {
+function TableHead({
+  className = "",
+  ...props
+}: React.ComponentPropsWithoutRef<"th">) {
   return (
     <th
       data-slot="table-head"
@@ -74,7 +92,10 @@ function TableHead({ className = "", ...props }) {
   );
 }
 
-function TableCell({ className = "", ...props }) {
+function TableCell({
+  className = "",
+  ...props
+}: React.ComponentPropsWithoutRef<"td">) {
   return (
     <td
       data-slot="table-cell"
@@ -87,7 +108,10 @@ function TableCell({ className = "", ...props }) {
   );
 }
 
-function TableCaption({ className, ...props }) {
+function TableCaption({
+  className = "",
+  ...props
+}: React.ComponentPropsWithoutRef<"caption">) {
   return (
     <caption
       data-slot="table-caption"

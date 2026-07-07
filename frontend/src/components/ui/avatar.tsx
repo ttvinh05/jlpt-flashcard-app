@@ -2,7 +2,13 @@ import { Avatar as AvatarPrimitive } from "radix-ui";
 
 import { cn } from "@/lib/utils";
 
-function Avatar({ className = "", size = "default", ...props }) {
+interface AvatarProps extends React.ComponentPropsWithoutRef<
+  typeof AvatarPrimitive.Root
+> {
+  size?: "default" | "sm" | "lg";
+}
+
+function Avatar({ className = "", size = "default", ...props }: AvatarProps) {
   return (
     <AvatarPrimitive.Root
       data-slot="avatar"
@@ -17,7 +23,10 @@ function Avatar({ className = "", size = "default", ...props }) {
   );
 }
 
-function AvatarImage({ className, ...props }) {
+function AvatarImage({
+  className = "",
+  ...props
+}: React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>) {
   return (
     <AvatarPrimitive.Image
       data-slot="avatar-image"
@@ -30,7 +39,10 @@ function AvatarImage({ className, ...props }) {
   );
 }
 
-function AvatarFallback({ className = "", ...props }) {
+function AvatarFallback({
+  className = "",
+  ...props
+}: React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>) {
   return (
     <AvatarPrimitive.Fallback
       data-slot="avatar-fallback"
@@ -44,7 +56,10 @@ function AvatarFallback({ className = "", ...props }) {
   );
 }
 
-function AvatarBadge({ className, ...props }) {
+function AvatarBadge({
+  className = "",
+  ...props
+}: React.ComponentPropsWithoutRef<"span">) {
   return (
     <span
       data-slot="avatar-badge"
@@ -60,7 +75,10 @@ function AvatarBadge({ className, ...props }) {
   );
 }
 
-function AvatarGroup({ className, ...props }) {
+function AvatarGroup({
+  className = "",
+  ...props
+}: React.ComponentPropsWithoutRef<"div">) {
   return (
     <div
       data-slot="avatar-group"
@@ -73,7 +91,10 @@ function AvatarGroup({ className, ...props }) {
   );
 }
 
-function AvatarGroupCount({ className, ...props }) {
+function AvatarGroupCount({
+  className = "",
+  ...props
+}: React.ComponentPropsWithoutRef<"div">) {
   return (
     <div
       data-slot="avatar-group-count"
